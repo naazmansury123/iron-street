@@ -1,0 +1,24 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.gallery-container {
+  display: flex;
+  flex-wrap: wrap; /* Agar screen choti ho to images neeche aa jayein */
+  justify-content: center; /* Images ko center mein rakho */
+  gap: 15px; /* Images ke beech mein space */
+  padding: 20px;
+}
+
+.gallery-item {
+  border: 2px solid #ccc;
+  padding: 5px;
+  background: #fff;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+.gallery-item img {
+  display: block; /* Images ke neeche extra space hatane ke liye */
+  max-width: 100%; /* Image apne container se bahar na nikle */
+}

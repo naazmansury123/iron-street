@@ -1,0 +1,61 @@
+/* collections.css */
+.collections-listing-section {
+    background-color: var(--eco-light-gray);
+}
+
+.collection-card {
+    display: flex;
+    margin-bottom: 50px;
+    background-color: var(--eco-white);
+    border-radius: var(--border-radius-main);
+    overflow: hidden;
+    box-shadow: var(--box-shadow-strong);
+    min-height: 400px;
+}
+
+.collection-card-reverse {
+    flex-direction: row-reverse;
+}
+
+.collection-image {
+    flex: 1 1 50%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease;
+}
+
+.collection-card:hover .collection-image {
+    transform: scale(1.05);
+}
+
+.collection-info {
+    flex: 1 1 50%;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.collection-info h2 {
+    font-family: var(--font-headings);
+    font-size: 2.5em;
+    color: var(--eco-text-primary);
+    margin-bottom: 15px;
+}
+
+.collection-info p {
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: var(--eco-text-secondary);
+    margin-bottom: 30px;
+}
+
+@media (max-width: 992px) {
+    .collection-card,
+    .collection-card-reverse {
+        flex-direction: column;
+    }
+    .collection-image {
+        min-height: 300px;
+    }
+}

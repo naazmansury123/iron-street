@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Arrivals - Iron Street</title>
+<!-- Font Awesome CDN for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+/* CSS Variables for easy theme management */
+:root {
+--primary-color: #ab241f;
+--primary-color-dark: #8c1e19;
+--text-color: #333;
+--secondary-text-color: #666;
+--border-color: #e0e0e0;
+--background-light: #f9f9f9;
+--top-bar-bg: #3A3E41;
+--success-color: #28a745;
+--font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+    /* Global Styles */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: var(--font-main);
+        color: var(--text-color);
+        background-color: #fff;
+    }
+
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+    
+    /* Preloader Styles */
+    #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 0.5s ease;
+    }
+    #loadingIcon {
+        width: 120px;
+        animation: pulse 1.5s infinite ease-in-out;
+    }
+    .loading-text-alt {
+        margin-top: 15px;
+        color: var(--secondary-text-color);
+        font-size: 1rem;
+    }
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+    }
+    
+    /* Sticky Header Wrapper */
+    .header-sticky-wrapper {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    
+    /* Top Bar Styles */
+    .top-bar {
+        background-color: var(--top-bar-bg);
+        color: #fff;
+        padding: 6px 0;
+        font-size: 0.8rem;
+    }
+    .top-bar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .top-bar-promo-text {
+        color: #fff;
+    }
+    .top-bar-promo-link {
+        color: #fff;
+        text-decoration: underline;
+        font-weight: bold;
+    }
+    .top-bar-btn {
+        color: #fff;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid #777;
+        padding: 5px 12px;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+    .top-bar-btn:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Main Header Styles */
+    header.main-header {
+        background-color: #fff;
+        padding: 15px 0;
+    }
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+    }
+   .logo-img {
+    height: 75px;
+    width: auto;
+    object-fit: contain;
+    transition: height 0.3s ease;
+}
+
+    /* Search Bar Styles */
+    .search-bar {
+        flex-grow: 1;
+        max-width: 500px;
+        position: relative;
+    }
+    .search-bar input {
+        width: 100%;
+        padding: 10px 40px 10px 15px;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        outline: none;
+        font-size: 0.9rem;
+    }
+    .search-bar .search-icon {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--secondary-text-color);
+        cursor: pointer;
+    }
+    
+    /* Header Actions */
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+    .header-action-item {
+        text-decoration: none;
+        color: var(--text-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        font-size: 0.85rem;
+    }
+    .header-action-item i {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+    }
+    
+    /* Main Navigation (Separate Bar) */
+    nav.main-nav {
+        background-color: #fff;
+        border-top: 1px solid var(--border-color);
+    }
+    .main-nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 35px;
+    }
+    .main-nav ul li a {
+        display: block;
+        padding: 15px 5px;
+        text-decoration: none;
+        color: var(--text-color);
+        font-weight: 500;
+        font-size: 0.9rem;
+        position: relative;
+        letter-spacing: 0.5px;
+    }
+    .main-nav ul li a::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background-color: var(--primary-color);
+        transition: width 0.3s ease;
+    }
+    .main-nav ul li a:hover::after,
+    .main-nav ul li a.active::after {
+        width: 100%;
+    }
+    
+    /* Hero Section */
+    .hero-section {
+        position: relative;
+        height: 550px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/frontend/images/dining.webp');
+        background-size: cover;
+        background-position: center;
+    }
+    .hero-text h1 {
+        font-size: 4.5rem;
+        font-family: 'Georgia', 'Times New Roman', Times, serif;
+        font-weight: 500;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    }
+    .hero-text p {
+        font-size: 1.2rem;
+        letter-spacing: 0.5px;
+        max-width: 600px;
+        margin: 0 auto;
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+    }
+
+    /* Page Header */
+    .page-header {
+        text-align: center;
+        padding: 40px 0;
+    }
+    .page-header h1 {
+        font-size: 2.5rem;
+        font-weight: 300;
+        color: var(--text-color);
+        margin-bottom: 5px;
+    }
+    .page-header p {
+        font-size: 1rem;
+        color: var(--secondary-text-color);
+    }
+
+    /* Filters Bar */
+    .filters-bar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+        border-top: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
+        margin-bottom: 30px;
+    }
+    .filter-group, .sort-group {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    .filter-group label, .sort-group label {
+        font-size: 0.8rem;
+        color: var(--secondary-text-color);
+        font-weight: bold;
+    }
+    .filter-btn, .sort-select {
+        padding: 8px 12px;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        background-color: #fff;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: background-color 0.3s, color 0.3s;
+    }
+    .filter-btn.active {
+        background-color: var(--primary-color);
+        color: #fff;
+        border-color: var(--primary-color-dark);
+    }
+    .exclude-stock {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.9rem;
+    }
+
+    /* Filter Modals */
+    .page-overlay {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background-color: rgba(0,0,0,0.5); z-index: 1050;
+        opacity: 0; visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .page-overlay.active { opacity: 1; visibility: visible; }
+    .filter-modal {
+        position: fixed; top: 50%; left: 50%;
+        transform: translate(-50%, -50%); background: #fff;
+        border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        z-index: 1060; width: 90%; max-width: 450px;
+        opacity: 0; visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    }
+    .filter-modal.active { opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1); }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid var(--border-color); }
+    .modal-header h3 { font-size: 1.2rem; font-weight: 600; }
+    .modal-close-btn { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--secondary-text-color); }
+    .modal-body { padding: 20px; }
+    #category-filter-list { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .category-filter-item { display: flex; align-items: center; gap: 8px; }
+    #price-range-display { text-align: center; font-size: 1.1rem; font-weight: 600; margin-bottom: 20px; color: var(--primary-color); }
+    .price-slider-container { position: relative; height: 5px; background: #ddd; border-radius: 5px; }
+    .price-slider-progress { position: absolute; height: 100%; background: var(--primary-color); border-radius: 5px; }
+    .price-range-input { position: relative; }
+    .price-range-input input { position: absolute; top: -5px; height: 5px; width: 100%; background: none; pointer-events: none; -webkit-appearance: none; appearance: none; }
+    input[type="range"]::-webkit-slider-thumb { height: 17px; width: 17px; border-radius: 50%; background: var(--primary-color); border: 2px solid #fff; box-shadow: 0 0 5px rgba(0,0,0,0.2); pointer-events: auto; -webkit-appearance: none; appearance: none; }
+    .modal-footer { padding: 15px 20px; border-top: 1px solid var(--border-color); text-align: right; }
+    .clear-filters-btn { background: none; border: none; color: var(--secondary-text-color); cursor: pointer; margin-right: 15px; text-decoration: underline; }
+
+    /* Product Grid */
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+
+    /* === START: ADVANCED PRODUCT CARD HOVER ANIMATIONS (WoodMart Inspired) === */
+    .product-card {
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        text-align: center;
+        transition: box-shadow 0.4s ease, transform 0.4s ease;
+        position: relative;
+        display: flex;
+        flex-direction: column; 
+        background-color: #fff;
+    }
+    .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
+    .product-image-container {
+        position: relative;
+        background-color: var(--background-light);
+        overflow: hidden; /* Crucial for containing the zoomed image */
+        border-radius: 8px 8px 0 0;
+    }
+    .product-card img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s ease-out;
+    }
+    .product-card:hover img {
+        transform: scale(1.08);
+    }
+    .product-badge {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background-color: var(--primary-color);
+        color: #fff;
+        padding: 5px 10px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        border-radius: 4px;
+        z-index: 3;
+    }
+    .wishlist-icon {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        font-size: 1.5rem;
+        color: var(--secondary-text-color);
+        cursor: pointer;
+        background: rgba(255,255,255,0.8);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 3;
+        opacity: 0;
+        transform: translateX(10px);
+        transition: opacity 0.3s ease, transform 0.3s ease, color 0.2s ease;
+    }
+    .product-card:hover .wishlist-icon {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    .wishlist-icon:hover {
+        background-color: #fff;
+    }
+    .wishlist-icon.active {
+        color: var(--primary-color);
+    }
+    .product-info {
+        padding: 20px;
+        flex-grow: 1; 
+        display: flex;
+        flex-direction: column;
+        position: relative; /* Needed for absolute positioning of the button */
+        padding-bottom: 80px; /* Make space for the button to appear */
+    }
+    .product-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--text-color);
+        margin-bottom: 5px;
+        min-height: 48px; 
+    }
+    .product-brand {
+        font-size: 0.9rem;
+        color: var(--secondary-text-color);
+        margin-bottom: 15px;
+    }
+    .product-price {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--text-color);
+        margin-bottom: auto; 
+    }
+    .product-price .old-price {
+        font-size: 1rem;
+        color: var(--secondary-text-color);
+        text-decoration: line-through;
+        margin-right: 10px;
+    }
+    .product-price .emi {
+        display: block;
+        font-size: 0.8rem;
+        color: var(--secondary-text-color);
+        font-weight: normal;
+        margin-top: 5px;
+    }
+    .btn-add-to-cart {
+        /* Positioned at the bottom, initially hidden */
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        width: auto; /* Let left/right positioning define width */
+        padding: 12px;
+        background-color: var(--primary-color);
+        color: #fff;
+        border: 2px solid var(--primary-color);
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    }
+    .product-card:hover .btn-add-to-cart {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .btn-add-to-cart:hover {
+        background-color: var(--primary-color-dark);
+        border-color: var(--primary-color-dark);
+    }
+    /* NEW: "Added to cart" success state */
+    .btn-add-to-cart.added {
+        background-color: var(--success-color);
+        border-color: var(--success-color);
+    }
+    .btn-add-to-cart:disabled {
+        background-color: #ccc;
+        border-color: #ccc;
+        cursor: not-allowed;
+    }
+    .product-card.out-of-stock {
+        opacity: 0.8;
+    }
+    .product-card.out-of-stock .product-image-container::after {
+        content: 'OUT OF STOCK';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(255, 255, 255, 0.85);
+        padding: 10px 20px;
+        font-weight: bold;
+        border: 2px solid var(--text-color);
+        color: var(--text-color);
+        z-index: 5;
+    }
+    /* === END: ADVANCED PRODUCT CARD HOVER ANIMATIONS === */
+    
+    /* Promotional Banner */
+    .promo-banner {
+        background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');
+        background-size: cover; background-position: center;
+        height: 350px; margin: 40px auto;
+        display: flex; flex-direction: column; justify-content: center; align-items: center;
+        color: #fff; text-align: center;
+        max-width: 1400px; border-radius: 8px;
+    }
+    .promo-banner h2 { font-size: 3rem; font-weight: bold; }
+    .promo-banner .shop-now-btn {
+        margin-top: 20px; padding: 12px 30px;
+        background-color: #fff; color: var(--text-color);
+        border: none; border-radius: 5px; font-size: 1rem;
+        font-weight: bold; cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .promo-banner .shop-now-btn:hover { background-color: #f0f0f0; }
+
+    /* REVAMPED Subscription Section */
+    .subscription-section {
+        background-color: #fdf5f5; padding: 60px 20px;
+        margin: 40px 0; text-align: center;
+        border-top: 1px solid #f0e0e0; border-bottom: 1px solid #f0e0e0;
+    }
+    .subscription-box { max-width: 650px; margin: 0 auto; }
+    .subscription-box h2 { font-size: 2.2rem; font-weight: 400; color: var(--primary-color-dark); margin-bottom: 15px; }
+    .subscription-box p { color: var(--secondary-text-color); margin-bottom: 30px; line-height: 1.6; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .subscription-form {
+        display: flex; justify-content: center; max-width: 500px; margin: 0 auto;
+        border: 1px solid #ddd; border-radius: 8px; overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .subscription-form input[type="email"] { flex-grow: 1; padding: 15px; border: none; font-size: 1rem; outline: none; color: var(--text-color); background-color: #fff; }
+    .subscription-form button { padding: 15px 30px; background-color: var(--primary-color); color: #fff; border: none; font-size: 1rem; font-weight: bold; cursor: pointer; transition: background-color 0.3s ease; flex-shrink: 0; }
+    .subscription-form button:hover { background-color: var(--primary-color-dark); }
+    
+    /* Popular Categories Section */
+    .categories-section { text-align: center; padding: 40px 0; }
+    .categories-section h2 { font-size: 2rem; font-weight: 300; margin-bottom: 40px; position: relative; display: inline-block; }
+    .categories-section h2::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 60px; height: 2px; background-color: var(--primary-color); }
+    .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .category-item { display: flex; align-items: center; background-color: var(--background-light); padding: 20px; text-align: left; transition: box-shadow 0.3s ease; text-decoration: none; color: inherit; border-radius: 5px; }
+    .category-item:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .category-item img { width: 60px; height: 60px; margin-right: 20px; }
+    .category-info h3 { font-size: 1.1rem; font-weight: 600; }
+
+    /* Footer */
+    .site-footer { background-color: var(--background-light); padding: 50px 0; font-size: 0.9rem; border-top: 1px solid var(--border-color); }
+    .footer-container { max-width: 1400px; margin: 0 auto; padding: 0 15px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; }
+    .footer-column { flex: 1 1 220px; min-width: 220px; }
+    .footer-column h4 { font-size: 1rem; font-weight: bold; margin-bottom: 20px; color: var(--text-color); }
+    .footer-column ul { list-style: none; padding: 0;}
+    .footer-column ul li { margin-bottom: 10px; }
+    .footer-column ul li a { text-decoration: none; color: var(--secondary-text-color); transition: color 0.3s ease; }
+    .footer-column ul li a:hover { color: var(--primary-color); }
+    .footer-connect p, .footer-address p { color: var(--secondary-text-color); line-height: 1.6; }
+    .social-icons { display: flex; align-items: center; gap: 15px; margin-top: 15px; }
+    .social-icons a { font-size: 1.4rem; color: var(--secondary-text-color); text-decoration: none; transition: color 0.3s ease; display: inline-flex; align-items: center; justify-content: center; }
+    .social-icons a:hover { color: var(--primary-color); }
+    .app-downloads { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; align-items: flex-start; }
+    .app-downloads img { height: 40px; }
+
+    /* Floating Action Buttons */
+    .floating-buttons { position: fixed; right: 20px; bottom: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 999; }
+    .fab { width: 60px; height: 60px; background-color: var(--primary-color); color: white; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.2); text-decoration: none; cursor: pointer; font-size: 0.6rem; text-align: center; transition: transform 0.2s ease, background-color 0.2s ease; }
+    .fab:hover { transform: scale(1.05); background-color: var(--primary-color-dark); }
+    .fab-icon { font-size: 1.5rem; margin-bottom: 2px; }
+
+    /* === NEW: SCROLL & FEEDBACK ANIMATIONS === */
+    @keyframes shake {
+        10%, 90% { transform: translateX(-1px); }
+        20%, 80% { transform: translateX(2px); }
+        30%, 50%, 70% { transform: translateX(-4px); }
+        40%, 60% { transform: translateX(4px); }
+    }
+    .shake {
+        animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+    }
+    .fade-in-section {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-in-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    /* === END: NEW ANIMATIONS === */
+
+    /* RESPONSIVE STYLES */
+    .hamburger-btn { display: none; cursor: pointer; background: none; border: none; font-size: 1.8rem; color: var(--text-color); z-index: 1001; }
+    @media (max-width: 992px) {
+        .main-nav { position: fixed; top: 0; left: -100%; width: 300px; height: 100vh; background-color: #fff; z-index: 1100; transition: left 0.3s ease-in-out; border-top: none; box-shadow: 4px 0 15px rgba(0,0,0,0.1); padding-top: 60px; overflow-y: auto; }
+        .main-nav.nav-open { left: 0; }
+        .main-nav ul { flex-direction: column; align-items: flex-start; gap: 0; padding: 0 20px; }
+        .main-nav ul li { width: 100%; }
+        .main-nav ul li a { padding: 15px 10px; width: 100%; border-bottom: 1px solid var(--border-color); }
+        .main-nav ul li a::after { display: none; }
+        .main-nav ul li a.active { color: var(--primary-color); font-weight: bold; }
+        .hamburger-btn { display: block; }
+        .main-header .header-content { gap: 15px; }
+        .header-actions { gap: 15px; }
+        .header-action-item i { font-size: 1.3rem; }
+        .header-action-item span { display: none; }
+        .header-action-item { gap: 0; }
+    }
+    @media (max-width: 768px) {
+        .product-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+        .header-content { flex-wrap: wrap; justify-content: space-between; }
+        .logo { flex-basis: 50%; }
+        .header-actions { flex-basis: 40%; justify-content: flex-end; }
+        .search-bar { order: 3; flex-basis: 100%; max-width: none; margin-top: 15px; }
+        .hero-section { height: 400px; }
+        .hero-text h1 { font-size: 2.8rem; }
+        .hero-text p { font-size: 1rem; }
+        .promo-banner h2 { font-size: 2rem; }
+        .filters-bar { flex-direction: column; gap: 20px; align-items: stretch; }
+        .filter-group, .sort-group { justify-content: space-between; }
+        .footer-container { flex-direction: column; text-align: center; }
+        .footer-column ul { padding: 0; }
+        .app-downloads, .social-icons { justify-content: center; align-items: center; }
+    }
+    @media (max-width: 480px) {
+        .top-bar { font-size: 0.7rem; }
+        .top-bar-promo-text { display: none; }
+        .top-bar .container { justify-content: space-between; }
+        .header-actions { gap: 10px; }
+        .hero-text h1 { font-size: 2.2rem; }
+        .subscription-form { flex-direction: column; border: none; box-shadow: none; gap: 10px; }
+        .subscription-form input, .subscription-form button { width: 100%; border-radius: 5px !important; border: 1px solid #ddd; }
+        #category-filter-list { grid-template-columns: 1fr; }
+    }
+</style>
+</head>
+<body>
+    <!-- Preloader Start -->
+    <div id="preloader">
+      <img id="loadingIcon" src="/frontend/iron_logo.png" alt="Loading Iron Street...">
+      <p class="loading-text-alt">Crafting your new arrivals...</p>
+    </div>
+    <!-- Preloader End -->
+
+    <!-- Page Overlay for Modals -->
+    <div id="page-overlay" class="page-overlay"></div>
+
+    <!-- Header & Navbar -->
+    <div class="header-sticky-wrapper">
+        <div class="top-bar">
+            <div class="container">
+                <a href="#" class="top-bar-btn"><i class="fas fa-truck"></i> Track-Order</a>
+                <span class="top-bar-promo-text">Sustainable Living, Stylishly Delivered. <a href="#" class="top-bar-promo-link">Shop Now</a></span>
+                <a href="#" class="top-bar-btn"><i class="fa-solid fa-phone"></i> Contact-Us</a>
+            </div>
+        </div>
+        <header class="main-header">
+            <div class="container header-content">
+                <a href="#" class="logo"><img src="/frontend/iron_logo.png" alt="IRON STREET Logo" class="logo-img"></a>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for new arrivals..." aria-label="Search products">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+                <div class="header-actions">
+                    <a href="#" class="header-action-item"><i class="fas fa-user"></i><span>Profile</span></a>
+                    <a href="#" class="header-action-item"><i class="fas fa-heart"></i><span>Want Vault <span class="wishlist-count">(0)</span></span></a>
+                    <a href="cart.html" class="header-action-item"><i class="fas fa-shopping-cart"></i><span>Cart <span class="cart-count">(0)</span></span></a>
+                </div>
+            </div>
+        </header>
+        <nav class="main-nav">
+            <div class="container">
+                <ul>
+                    <li><a href="#" class="active">NEW ARRIVALS</a></li>
+                    <li><a href="#">LIVING ROOM</a></li>
+                    <li><a href="#">BEDROOM</a></li>
+                    <li><a href="#">DINING</a></li>
+                    <li><a href="#">OUTDOOR LIVING</a></li>
+                    <li><a href="#">DECOR & LIGHTING</a></li>
+                    <li><a href="#">OFFICE FURNITURE</a></li>
+                    <li><a href="#">COLLECTIONS</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-text">
+            <h1>Dine in Elegance</h1>
+            <p>Discover furniture that makes every meal a special occasion.</p>
+        </div>
+    </section>
+
+    <div class="container fade-in-section">
+        <header class="page-header">
+            <h1>New Arrivals</h1>
+            <p id="product-count-display">(22 Products)</p>
+        </header>
+        <div class="filters-bar">
+            <div class="filter-group">
+                <label>FILTERS</label>
+                <button class="filter-btn" id="category-filter-btn">Category ▼</button>
+                <button class="filter-btn" id="price-filter-btn">Price ▼</button>
+                <div class="exclude-stock">
+                    <input type="checkbox" id="exclude-stock"><label for="exclude-stock">Exclude Out Of Stock</label>
+                </div>
+            </div>
+            <div class="sort-group">
+                <label>SORT BY</label>
+                <select class="sort-select" id="sort-select">
+                    <option value="recommended">Recommended</option>
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                    <option value="newest">Newest First</option>
+                </select>
+            </div>
+        </div>
+        <main id="product-grid" class="product-grid"></main>
+    </div>
+
+    <!-- Promotional Banner -->
+    <section class="promo-banner fade-in-section">
+        <div>
+            <h2>FullHouse Fiesta 70% <sup>UP TO</sup></h2>
+            <button class="shop-now-btn">SHOP NOW</button>
+        </div>
+    </section>
+
+    <div class="container fade-in-section">
+        <main id="product-grid-2" class="product-grid"></main>
+    </div>
+
+    <!-- Subscription Section -->
+    <section class="subscription-section fade-in-section">
+        <div class="subscription-box">
+            <h2>Interested in Our New Arrivals?</h2>
+            <p>Subscribe to get notified when we add more amazing designs to our range.</p>
+            <form id="subscription-form" class="subscription-form">
+                <input type="email" id="sub-email" placeholder="Enter your Email ID" required>
+                <button type="submit">SUBSCRIBE</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Popular Categories -->
+    <section class="categories-section container fade-in-section">
+        <h2>Browse Popular Categories</h2>
+        <div class="category-grid">
+            <a href="#" class="category-item"><img src="https://img.icons8.com/ios-filled/100/ab241f/sofa.png" alt="Living Room Icon"/><div class="category-info"><h3>Living Room</h3></div></a>
+            <a href="#" class="category-item"><img src="https://img.icons8.com/ios-filled/100/ab241f/bed.png" alt="Bedroom Icon"/><div class="category-info"><h3>Bedroom</h3></div></a>
+            <a href="#" class="category-item"><img src="https://img.icons8.com/ios-filled/100/ab241f/dining-room.png" alt="Dining Room Icon"/><div class="category-info"><h3>Dining Room</h3></div></a>
+            <a href="#" class="category-item"><img src="https://img.icons8.com/ios-filled/100/ab241f/desk.png" alt="Study & Office Icon"/><div class="category-info"><h3>Study & Office</h3></div></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>The Company</h4>
+                <ul><li><a href="#">About Us</a></li><li><a href="#">Careers</a></li><li><a href="#">Press</a></li><li><a href="#">Team</a></li><li><a href="#">Blog</a></li><li><a href="#">Inside IS</a></li><li><a href="#">Privacy Policy</a></li></ul>
+            </div>
+            <div class="footer-column">
+                <h4>More Information</h4>
+                <ul><li><a href="#">Fees and Payment</a></li><li><a href="#">Shipping & Delivery</a></li><li><a href="#">Terms and Conditions</a></li><li><a href="#">Warranty, Return and Refund</a></li><li><a href="#">Contact Us</a></li><li><a href="#">Visit Us</a></li><li><a href="#">Buy in Bulk</a></li></ul>
+            </div>
+            <div class="footer-column footer-connect">
+                <h4>Connect With Us</h4>
+                <p>+91-80698 07777</p>
+                 <h4 style="margin-top: 20px;">Download App</h4>
+                 <div class="app-downloads">
+                     <a href="#"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store"></a>
+                     <a href="#"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Google Play"></a>
+                 </div>
+            </div>
+            <div class="footer-column footer-address">
+                <h4>Address</h4>
+                <p>Iron Street Retail Limited, <br>2rd Floor, Hawa Magri Industrial Area, Sukher, Sapetiya, Udaipur, Rajasthan 313001</p>
+                <p style="margin-top: 10px; font-size: 0.8rem;">CIN: U01100MH1999PLC120563
+                   <div class="social-icons">
+                        <a href="https://www.facebook.com/Ironstreetfurniture" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/ironstreet1/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href=" https://wa.me/message/Q5VZJ3P4TZX4N1" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://in.pinterest.com/ironstreet69/" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons">
+        <a href="#" class="fab"><span class="fab-icon">📹</span> Shop On Call</a>
+        <a href="#" class="fab"><span class="fab-icon">❓</span> Need Help?</a>
+    </div>
+
+    <!-- Filter Modals -->
+    <div id="category-modal" class="filter-modal"><div class="modal-header"><h3>Filter by Category</h3><button class="modal-close-btn">×</button></div><div class="modal-body"><div id="category-filter-list"></div></div><div class="modal-footer"><button class="clear-filters-btn" id="clear-category-filters">Clear</button></div></div>
+    <div id="price-modal" class="filter-modal"><div class="modal-header"><h3>Filter by Price</h3><button class="modal-close-btn">×</button></div><div class="modal-body"><div id="price-range-display">₹0 - ₹300,000</div><div class="price-slider-container"><div class="price-slider-progress"></div><div class="price-range-input"><input type="range" id="price-min" min="0" max="300000" value="0" step="1000"><input type="range" id="price-max" min="0" max="300000" value="300000" step="1000"></div></div></div><div class="modal-footer"><button class="clear-filters-btn" id="clear-price-filters">Reset</button></div></div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // --- START: JAVASCRIPT FOR RESPONSIVE HAMBURGER MENU ---
+        const mainHeader = document.querySelector('.main-header .header-content');
+        const mainNav = document.querySelector('nav.main-nav');
+        const pageOverlay = document.getElementById('page-overlay');
+        
+        if (mainHeader && mainNav) {
+            const hamburgerBtn = document.createElement('button');
+            hamburgerBtn.classList.add('hamburger-btn');
+            hamburgerBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            mainHeader.insertBefore(hamburgerBtn, mainHeader.firstChild);
+            
+            const openNav = () => {
+                mainNav.classList.add('nav-open');
+                pageOverlay.classList.add('active');
+            };
+            const closeNav = () => {
+                mainNav.classList.remove('nav-open');
+                pageOverlay.classList.remove('active');
+            };
+
+            hamburgerBtn.addEventListener('click', openNav);
+            pageOverlay.addEventListener('click', closeNav);
+        }
+        
+        // --- START: DATA & VARIABLES ---
+        const allProducts = [
+            { id: 1, name: 'Millennium Dining Table', desc: 'In Amber Walnut Finish', oldPrice: 12500, newPrice: 10625, discount: 28, img: '/frontend/images/duple.png', inStock: true, category: 'Bedroom' },
+            { id: 2, name: 'Nova Metal Arm chair ', desc: 'Set Of 2 (Dual Tone Finish)', oldPrice: 5500, newPrice: 4800, discount: 35, img: '/frontend/images/dupl.png', inStock: true, category: 'Dining' },
+            { id: 3, name: 'Reva Cocoon Outdoor Sofa', desc: 'In Oyster White', oldPrice: 18000, newPrice: 15300, discount: 47, img: '/frontend/images/reva.jpg', inStock: true, category: 'Living Room' },
+            { id: 4, name: 'Ivory Vista Outdoor Dining Set', desc: 'In Black Marble Color High Gloss Finish', oldPrice: 86240, newPrice: 61600, discount: 42, img: '/frontend/images/outdoor 1.jpg', inStock: true, category: 'Dining' },
+            { id: 5, name: 'Macra Linea Patio Dining set ', desc: 'In White Marble High Gloss', oldPrice: 85260, newPrice:60900 , discount: 40, img: '/frontend/images/dining.webp', inStock: true, category: 'Dining' },
+            { id: 6, name: '', desc: 'In Dual Tone Finish', oldPrice: 224499, newPrice: 150749, discount: 33, img: '/frontend/images/1sheter.jpg', inStock: true, category: 'Storage' },
+            { id: 7, name: 'Atmosphera Portofino Sofa-3 Seater', desc: 'In Emerald Green', oldPrice: 25000, newPrice: 21250, discount: 31, img: '/frontend/images/WHITE SOFA.jpg', inStock: true, category: 'Living Room' },
+            { id: 8, name: 'Raven Loop Patio Chair', desc: 'With Metal Frame', oldPrice: 3999, newPrice: 3450, discount: 20, img: '/frontend/images/Casamania Raphia Rattan Chair.jpeg', inStock: true, category: 'Storage' },
+            { id: 9, name: 'MetroGrid Iron Bed Frame [Queen Size]', desc: 'With Headboard Storage', oldPrice: 16800, newPrice: 12600, discount: 26, img: '/frontend/images/BED - Copy.jpg', inStock: true, category: 'Bedroom' },
+            { id: 10, name: 'Aangan Low-Seater Dining Set', desc: 'In Distressed White Finish', oldPrice: 25800, newPrice: 18000, discount: 25, img: '/frontend/images/chair01.webp', inStock: true, category: 'Living Room' },
+            { id: 11, name: 'ModernVista Bar Set - 4 Seater ', desc: 'For Home Office', oldPrice: 78000, newPrice:34800, discount: 25, img: '/frontend/images/DILU.jpeg', inStock: true, category: 'Office' },
+            { id: 12, name: 'Outdoor 6-Seater Patio Dining Set with Glass Table and Cushioned Chairs', desc: 'In Charcoal Grey Fabric', oldPrice: 59640, newPrice: 42600, discount: 32, img: '/frontend/images/s2.jpeg', inStock: true, category: 'Living Room' },
+            { id: 13, name: 'Modern Industrial High Bar Table Set with Bar Stools', desc: 'With Golden Legs', oldPrice: 59640, newPrice: 42600, discount: 28, img: '/frontend/images/s4.JPG', inStock: true, category: 'Living Room' },
+            { id: 14, name: 'Cosmo Weave Outdoor Sofa Set - 4 Seater', desc: 'Set of 2, Adjustable Height', oldPrice: 39200, newPrice: 28000, discount: 32, img: '/frontend/images/s6.webp', inStock: true, category: 'Dining' },
+            { id: 15, name: 'Linear DIning Set - 6 Seater', desc: 'In Teak Finish', oldPrice: 86240, newPrice: 61600, discount: 25, img: '/frontend/images/grren.jpg', inStock: true, category: 'Dining' },
+            { id: 16, name: 'Industrial Arch Bookshelf with Open Shelves', desc: 'In Royal Blue Velvet', oldPrice: 22500, newPrice: 18500, discount: 27, img: '/frontend/images/shelfs.jpg', inStock: true, category: 'Living Room' },
+            { id: 17, name: '', desc: 'With Arc Design', oldPrice: 9999, newPrice: 6999, discount: 30, img: '/frontend/images/', inStock: true, category: 'Decor' },
+            { id: 18, name: '', desc: 'With Hooks, Walnut Finish', oldPrice: 6000, newPrice: 4200, discount: 30, img: '/frontend/images/s11.JPG', inStock: true, category: 'Storage' },
+            { id: 19, name: '', desc: 'With Lumbar Support', oldPrice: 18000, newPrice: 12600, discount: 30, img: '/frontend/images/s12.jpeg', inStock: true, category: 'Office' },
+            { id: 20, name: 'Kids Study Table and Chair Set', desc: 'In Pastel Blue', oldPrice: 9500, newPrice: 6650, discount: 30, img: '/frontend/images/s13.jpg', inStock: true, category: 'Office' },
+        ];
+        const productGrid = document.getElementById('product-grid');
+        const productGrid2 = document.getElementById('product-grid-2');
+        const sortSelect = document.getElementById('sort-select');
+        const stockFilter = document.getElementById('exclude-stock');
+        const productCountDisplay = document.getElementById('product-count-display');
+        const preloader = document.getElementById('preloader');
+        const subscriptionForm = document.getElementById('subscription-form');
+        const wishlistCountSpan = document.querySelector('.wishlist-count');
+        const cartCountSpan = document.querySelector('.cart-count');
+        
+        // Filter Elements
+        const categoryModal = document.getElementById('category-modal');
+        const priceModal = document.getElementById('price-modal');
+        const categoryFilterBtn = document.getElementById('category-filter-btn');
+        const priceFilterBtn = document.getElementById('price-filter-btn');
+        const categoryListContainer = document.getElementById('category-filter-list');
+        const priceMinSlider = document.getElementById('price-min');
+        const priceMaxSlider = document.getElementById('price-max');
+        const priceRangeDisplay = document.getElementById('price-range-display');
+        const sliderProgress = document.querySelector('.price-slider-progress');
+        const clearCategoryBtn = document.getElementById('clear-category-filters');
+        const clearPriceBtn = document.getElementById('clear-price-filters');
+
+        // State Variables
+        let wishlist = JSON.parse(localStorage.getItem('ecoWishlist')) || [];
+        let activeCategories = [];
+        let priceRange = { min: 0, max: 300000 };
+        const priceGap = 10000;
+
+        // --- START: CORE FUNCTIONS ---
+        function formatPrice(price) { return `₹${price.toLocaleString('en-IN')}`; }
+        function calculateEmi(price) { return Math.round(price / 24); }
+
+        function createProductCard(product) {
+            const isWishlisted = wishlist.includes(product.id) ? 'active' : '';
+            const outOfStockClass = !product.inStock ? 'out-of-stock' : '';
+            const buttonText = product.inStock ? 'Add to Cart' : 'Out of Stock';
+            const buttonDisabled = !product.inStock ? 'disabled' : '';
+            return `<article class="product-card ${outOfStockClass}" data-product-id="${product.id}"><div class="product-image-container"><img src="${product.img}" alt="${product.name}">${product.discount ? `<div class="product-badge">${product.discount}% OFF</div>` : ''}<div class="wishlist-icon ${isWishlisted}"><i class="fas fa-heart"></i></div></div><div class="product-info"><h2 class="product-name">${product.name}</h2><p class="product-brand">By Iron Street</p><div class="product-price"><span class="old-price">${formatPrice(product.oldPrice)}</span><span class="new-price">${formatPrice(product.newPrice)}</span></div><button class="btn-add-to-cart" ${buttonDisabled}>${buttonText}</button></div></article>`;
+        }
+
+        function renderProducts(productsToRender) {
+            productGrid.innerHTML = ''; productGrid2.innerHTML = '';
+            const products1 = productsToRender.slice(0, 8);
+            const products2 = productsToRender.slice(8);
+            if (productsToRender.length === 0) { productGrid.innerHTML = '<p>No products match your criteria. Please try different filters.</p>'; }
+            else { products1.forEach(p => productGrid.innerHTML += createProductCard(p)); products2.forEach(p => productGrid2.innerHTML += createProductCard(p)); }
+            productCountDisplay.textContent = `(${productsToRender.length} Product${productsToRender.length !== 1 ? 's' : ''})`;
+        }
+        
+        function updateHeaderCounts() {
+            const storedWishlist = JSON.parse(localStorage.getItem('ecoWishlist')) || [];
+            if (wishlistCountSpan) wishlistCountSpan.textContent = `(${storedWishlist.length})`;
+            const storedCart = JSON.parse(localStorage.getItem('ecoCart')) || [];
+            const totalItemsInCart = storedCart.reduce((sum, item) => sum + item.quantity, 0);
+            if (cartCountSpan) cartCountSpan.textContent = `(${totalItemsInCart})`;
+        }
+        
+        function applyFiltersAndSort() {
+            let filtered = [...allProducts];
+            if (stockFilter.checked) { filtered = filtered.filter(p => p.inStock); }
+            if (activeCategories.length > 0) { filtered = filtered.filter(p => activeCategories.includes(p.category)); }
+            filtered = filtered.filter(p => p.newPrice >= priceRange.min && p.newPrice <= priceRange.max);
+            const sortBy = sortSelect.value;
+            if (sortBy === 'price-asc') filtered.sort((a, b) => a.newPrice - b.newPrice);
+            else if (sortBy === 'price-desc') filtered.sort((a, b) => b.newPrice - a.newPrice);
+            else if (sortBy === 'newest') filtered.sort((a, b) => b.id - a.id);
+            renderProducts(filtered);
+            updateFilterButtonStates();
+        }
+
+        // --- START: FILTERING LOGIC ---
+        function populateCategoryFilter() {
+            const categories = [...new Set(allProducts.map(p => p.category))];
+            categoryListContainer.innerHTML = categories.map(cat => `<label class="category-filter-item"><input type="checkbox" value="${cat}" data-filter="category"><span>${cat}</span></label>`).join('');
+        }
+        function openModal(modal) { modal.classList.add('active'); pageOverlay.classList.add('active'); }
+        function closeModal(modal) { modal.classList.remove('active'); pageOverlay.classList.remove('active'); }
+        function updateFilterButtonStates() {
+            categoryFilterBtn.classList.toggle('active', activeCategories.length > 0);
+            const isPriceDefault = priceRange.min == priceMinSlider.min && priceRange.max == priceMaxSlider.max;
+            priceFilterBtn.classList.toggle('active', !isPriceDefault);
+        }
+        categoryFilterBtn.addEventListener('click', () => openModal(categoryModal));
+        priceFilterBtn.addEventListener('click', () => openModal(priceModal));
+        [categoryModal, priceModal].forEach(modal => {
+            modal.querySelector('.modal-close-btn').addEventListener('click', () => closeModal(modal));
+        });
+        categoryListContainer.addEventListener('change', (e) => {
+            if (e.target.dataset.filter === 'category') {
+                activeCategories = Array.from(categoryListContainer.querySelectorAll('input:checked')).map(cb => cb.value);
+                applyFiltersAndSort();
+            }
+        });
+        clearCategoryBtn.addEventListener('click', () => {
+            activeCategories = [];
+            categoryListContainer.querySelectorAll('input:checked').forEach(cb => cb.checked = false);
+            applyFiltersAndSort();
+        });
+        const updatePriceSliderUI = () => {
+            priceRangeDisplay.textContent = `${formatPrice(priceRange.min)} - ${formatPrice(priceRange.max)}`;
+            sliderProgress.style.left = (priceRange.min / priceMinSlider.max) * 100 + "%";
+            sliderProgress.style.right = 100 - (priceRange.max / priceMaxSlider.max) * 100 + "%";
+        };
+        [priceMinSlider, priceMaxSlider].forEach(slider => {
+            slider.addEventListener('input', () => {
+                let minVal = parseInt(priceMinSlider.value), maxVal = parseInt(priceMaxSlider.value);
+                if (maxVal - minVal < priceGap) {
+                    if (slider.id === "price-min") priceMinSlider.value = maxVal - priceGap;
+                    else priceMaxSlider.value = minVal + priceGap;
+                }
+                priceRange.min = parseInt(priceMinSlider.value);
+                priceRange.max = parseInt(priceMaxSlider.value);
+                updatePriceSliderUI();
+                applyFiltersAndSort();
+            });
+        });
+        clearPriceBtn.addEventListener('click', () => {
+            priceMinSlider.value = priceMinSlider.min; priceMaxSlider.value = priceMaxSlider.max;
+            priceRange.min = parseInt(priceMinSlider.min); priceRange.max = parseInt(priceMaxSlider.max);
+            updatePriceSliderUI(); applyFiltersAndSort();
+        });
+
+        // --- START: EVENT LISTENERS ---
+        window.onload = () => { preloader.style.opacity = '0'; setTimeout(() => preloader.style.display = 'none', 500); };
+        sortSelect.addEventListener('change', applyFiltersAndSort);
+        stockFilter.addEventListener('change', applyFiltersAndSort);
+        function handleProductInteraction(event) {
+            const card = event.target.closest('.product-card');
+            if (!card) return;
+            const productId = parseInt(card.dataset.productId);
+            const productData = allProducts.find(p => p.id === productId);
+            if (!productData) return;
+            if (event.target.closest('.wishlist-icon')) {
+                const icon = event.target.closest('.wishlist-icon');
+                if (wishlist.includes(productId)) { wishlist = wishlist.filter(id => id !== productId); icon.classList.remove('active'); }
+                else { wishlist.push(productId); icon.classList.add('active'); }
+                localStorage.setItem('ecoWishlist', JSON.stringify(wishlist));
+                updateHeaderCounts();
+            }
+            if (event.target.matches('.btn-add-to-cart')) {
+                const button = event.target;
+                button.disabled = true;
+                let cart = JSON.parse(localStorage.getItem('ecoCart')) || [];
+                const existingItem = cart.find(item => item.id === productData.id);
+                if (existingItem) { existingItem.quantity++; }
+                else { cart.push({ id: productData.id, name: productData.name, price: productData.newPrice, image: productData.img, quantity: 1 }); }
+                localStorage.setItem('ecoCart', JSON.stringify(cart));
+                button.classList.add('added'); button.innerHTML = 'Added!   <i class="fas fa-check"></i>';
+                const cartIcon = document.querySelector('.header-action-item .fa-shopping-cart');
+                cartIcon.classList.add('shake');
+                updateHeaderCounts();
+                setTimeout(() => cartIcon.classList.remove('shake'), 500);
+                setTimeout(() => { window.location.href = 'cart.html'; }, 800);
+            }
+        }
+        productGrid.addEventListener('click', handleProductInteraction);
+        productGrid2.addEventListener('click', handleProductInteraction);
+        subscriptionForm.addEventListener('submit', (e) => {
+            e.preventDefault(); const emailInput = document.getElementById('sub-email');
+            if (emailInput.value) { alert(`Thank you! Subscribed with ${emailInput.value}.`); emailInput.value = ''; }
+            else { alert('Please enter a valid email address.'); }
+        });
+
+        // --- On-Scroll Animations ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in-section').forEach(section => { observer.observe(section); });
+
+        // --- INITIAL PAGE LOAD ---
+        populateCategoryFilter();
+        updatePriceSliderUI();
+        applyFiltersAndSort();
+        updateHeaderCounts();
+    });
+</script>
+</body>
+</html>

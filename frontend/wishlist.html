@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Want Vault - IRON STREET</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <!-- Link naaz.css FIRST for base styles and variables -->
+    <link rel="stylesheet" href="naaz.css">
+    <link rel="stylesheet" href="wishlist.css"> <!-- Specific styles for wishlist page -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header class="site-header wishlist-page-header"> <!-- Added a specific class -->
+        <div class="container">
+            <a href="naaz.html" class="logo-link">
+                <!-- Make sure iron_logo.png is in the correct path relative to wishlist.html -->
+                <img src="iron_logo.png" alt="IRON STREET Logo" class="header-logo-img">
+            </a>
+            <nav class="wishlist-header-nav">
+                <a href="naaz.html" class="nav-link btn btn-secondary-outline">Continue Shopping</a>
+                <a href="cart.html" class="nav-link btn btn-primary">View Cart <span class="cart-count-wishlist-header">(0)</span></a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="wishlist-main-container section-padding">
+        <div class="container">
+            <div class="wishlist-page-title-container"> <!-- Changed class for clarity -->
+                <h1 class="wishlist-title">My Want Vault</h1>
+            </div>
+
+            <div id="wishlist-items-list" class="wishlist-items-grid"> <!-- Changed class for grid layout -->
+                <!-- Wishlist items will be dynamically inserted here by JavaScript -->
+            </div>
+
+            <!-- This container will be shown/hidden by JavaScript -->
+            <div class="wishlist-empty-message-container" style="display: none;">
+                <i class="far fa-heart empty-icon"></i>
+                <h2>Your Want Vault is Empty</h2>
+                <p>Looks like you haven't added anything yet. Start exploring and save your favorites!</p>
+                <a href="naaz.html" class="btn btn-primary">Discover Products</a>
+            </div>
+
+            <div class="wishlist-actions-footer" style="text-align: center; margin-top: 40px; display: none;"> <!-- Initially hidden -->
+                 <button id="clear-wishlist-btn" class="btn btn-danger">Clear All Items</button> <!-- Changed style for clear -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+         <div class="container">
+            <div class="footer-bottom" style="border-top:none; padding-top:20px;"> <!-- Adjusted style -->
+                <p class="copyright" style="margin-top:0;">© 2024 IRON STREET. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="wishlist.js"></script>
+</body>
+</html>

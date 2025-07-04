@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRON STREET - Sustainable Home Furnishings</title>
+    
+    <!-- ✅ CSS FILES -->
+    <link rel="stylesheet" href="naaz.css"> 
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+     <style>
+    /* YOUR EXISTING STYLES FROM THE <style> block - KEEP THESE */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      font-family: var(--font-primary);
+    }
+
+    .dropdown > a {
+      text-decoration: none;
+      color: var(--eco-text-primary);
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      background-color: var(--eco-white);
+      box-shadow: var(--box-shadow-strong);
+      border-radius: var(--border-radius-main);
+      z-index: 1000;
+      min-width: 200px;
+      left: 50%;
+      transform: translateX(-50%);
+      top: calc(100% + 12px);
+      border: 1px solid var(--eco-medium-gray);
+    }
+
+    .dropdown-menu a {
+      color: var(--eco-text-secondary);
+      padding: 10px 15px;
+      text-decoration: none;
+      display: block;
+      transition: background-color 0.2s ease, color 0.2s ease;
+      font-size: 0.9em;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: var(--eco-primary-accent);
+      color: var(--eco-text-on-primary-accent);
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .header-action-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: var(--eco-text-secondary);
+        position: relative;
+        padding: 5px;
+    }
+
+    .header-action-item i {
+        font-size: 1.8em;
+        margin-bottom: 4px;
+        color: var(--eco-primary-accent);
+        transition: color 0.3s ease, transform 0.2s ease;
+    }
+
+    .header-action-item span {
+        font-size: 0.8em;
+        color: var(--eco-text-primary);
+        line-height: 1.2;
+        margin-top: 0;
+        white-space: nowrap;
+    }
+
+    .header-action-item span .cart-count,
+    .header-action-item span .wishlist-count {
+        background-color: transparent !important;
+        color: inherit !important;
+        border-radius: 0 !important;
+        padding: 0 0 0 2px !important;
+        font-size: 1em !important;
+        vertical-align: baseline !important;
+        margin-left: 2px !important;
+        font-weight: normal !important;
+        display: inline !important;
+    }
+
+    .header-action-item:hover i {
+        color: var(--eco-dark-gray);
+        transform: scale(1.1) rotate(-5deg);
+    }
+    .header-action-item:hover span {
+        color: var(--eco-primary-accent);
+    }
+
+    .header-actions .dropdown.header-action-item > a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+        padding: 0;
+    }
+    .header-actions .dropdown.header-action-item > a i {
+        margin-right: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Preloader Start -->
+  <div id="preloader">
+    <img id="loadingIcon" src="iron_logo.png" alt="Loading EcoCrafters...">
+    <p class="loading-text-alt">Crafting your sustainable experience...</p>
+  </div>
+<!-- Preloader End -->
+
+    <div class="top-bar">
+        <div class="container">
+            <a href="#" class="btn btn-track top-bar-button">
+                <i class="fas fa-truck-loading"></i> Track-Order
+            </a>
+            <span class="top-bar-promo-text">
+                Sustainable Living, Stylishly Delivered. Up to 15% off outdoor essentials!
+                <a href="#" class="top-bar-promo-link">Shop Now</a>
+            </span>
+            <a href="#" class="btn btn-track top-bar-button">
+                <i class="fa-solid fa-phone"></i> Contact-Us
+            </a>
+        </div>
+    </div>
+
+    <header>
+    <div class="container header-content">
+        <div class="logo">
+            <a href="naaz.html">
+                <img src="iron_logo.png" alt="IRON STREET Logo" class="logo-img">
+            </a>
+        </div>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Search for sustainable products..." aria-label="Search products">
+            <button aria-label="Search"><i class="fas fa-search"></i></button>
+        </div>
+
+        <div class="header-actions">
+            <div class="dropdown header-action-item">
+                <a href="#" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <div class="dropdown-menu" role="menu">
+                    <a href="#" role="menuitem">My Profile</a>
+                    <a href="wishlist.html" role="menuitem">Want Vault</a>
+                    <a href="#" role="menuitem">Track Your Order</a>
+                    <a href="#" role="menuitem">Help Center</a>
+                    <a href="#" role="menuitem">Sign In / Register</a>
+                    <a href="#" role="menuitem">My Orders</a>
+                </div>
+            </div>
+
+            <a href="wishlist.html" class="header-action-item" aria-label="View Wishlist">
+                <i class="fas fa-heart"></i>
+                <span class="icon-label">Want Vault <span class="wishlist-count">(1)</span></span>
+            </a>
+            <a href="cart.html" class="cart-link header-action-item" aria-label="View Cart">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Cart <span class="cart-count">(3)</span></span>
+            </a>
+        </div>
+    </div>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <!-- ✅ UPDATED NAVIGATION LINKS -->
+                <li><a href="new-arrivel.html">New Arrivals</a></li>
+                <li><a href="living-room.html">Living Room</a></li>
+                <li><a href="bedroom.html">Bedroom</a></li>
+                <li><a href="dining.html">Dining</a></li>
+                <li><a href="outdoor-living.html" class="active">Outdoor Living</a></li>
+                <li><a href="decor-lighting.html">Decor & Lighting</a></li>
+                <li><a href="office-furniture.html">Office Furniture</a></li>
+                <li><a href="collections.html">Collections</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+    <!-- ✅ FIXED: Removed style="display: none;" from this tag -->
+    <main id="main-content">
+        <section class="hero-section">
+            <div class="carousel-container">
+                <div class="carousel-slide active-slide">
+                    <!-- ✅ CORRECTED PATH -->
+                    <img src="images/outdoor 1.jpg" alt="Sustainable Living Banner">
+                    <div class="hero-content animate-on-load">
+                        <h1>Embrace Sustainable<br>Elegance </h1>
+                        <p class="ending-soon">Limited Time: <span>Free Iron-Tote</span> with orders over ₹8000!</p>
+                        <a href="#" class="btn btn-primary">EXPLORE COLLECTIONS</a>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <!-- ✅ CORRECTED PATH -->
+                    <img src="images/s13.jpg" alt="New Collection Banner">
+                     <div class="hero-content">
+                        <h1>Fresh & Green<br>New Arrivals</h1>
+                        <p class="promo-code">BEAUTIFY YOUR HOME, KINDLY</p>
+                        <a href="#" class="btn btn-primary">SHOP NEW  IN</a>
+                    </div>
+                </div>
+                 <div class="carousel-slide">
+                    <!-- ✅ CORRECTED PATH -->
+                    <img src="images/koli.avif" alt="Outdoor Furniture Banner">
+                     <div class="hero-content">
+                        <h1>Outdoor Oasis<br>Naturally Crafted</h1>
+                        <p class="promo-code">RELAX IN Iron-FRIENDLY STYLE</p>
+                        <a href="#" class="btn btn-primary">VIEW OUTDOOR RANGE</a>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <!-- ✅ CORRECTED PATH -->
+                    <img src="images/dup.png" alt="Indoor Dining Banner">
+                     <div class="hero-content">
+                        <h1>Dine Sustainably<br>Chic & Conscious</h1>
+                        <p class="promo-code">GATHER AROUND IRON DESIGNS</p>
+                        <a href="#" class="btn btn-primary">SHOP DINING SETS</a>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control prev" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-control next" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
+        </section>
+
+        <section class="explore-range section-padding">
+            <div class="container">
+                <h2 class="section-title animate-scroll">Explore. Select. Shop.</h2>
+                <div class="category-grid">
+                    <div class="category-item animate-scroll stagger-item">
+                        <div class="category-icon"><i class="fas fa-leaf"></i></div>
+                        <p>New Arrivals</p>
+                    </div>
+                    <div class="category-item animate-scroll stagger-item">
+                        <img src="https://www.ulcdn.net/media/Web-home-popular-categories/Sofas.png?1727340104" alt="Sofas">
+                        <p>Sofas & Seating</p>
+                    </div>
+                    <div class="category-item animate-scroll stagger-item">
+                        <img src="https://www.ulcdn.net/media/web-home-popular-categories/Web_Sofa_Cum_bed.png?1745477715" alt="Beds">
+                        <p>Beds & Mattresses</p>
+                    </div>
+                    <div class="category-item animate-scroll stagger-item">
+                        <img src="https://www.ulcdn.net/media/web-home-popular-categories/Beds.png?1727340594" alt="Dining">
+                        <p>Dining Sets</p>
+                    </div>
+                    <div class="category-item animate-scroll stagger-item">
+                        <img src="https://www.ulcdn.net/media/web-home-popular-categories/Dining.png?1727340645" alt="Storage">
+                        <p>Storage Solutions</p>
+                    </div>
+                    <div class="category-item animate-scroll stagger-item">
+                        <img src="https://www.ulcdn.net/media/web-home-popular-categories/Dining.png?1727340645" alt="Office">
+                        <p>Home Office</p>
+                    </div>
+                    <div class="category-item animate-scroll stagger-item">
+                        <img src="https://www.ulcdn.net/media/web-home-popular-categories/Shoe_Racks.png?1727340822" alt="Lighting">
+                        <p>Lighting</p>
+                    </div>
+                    <div class="category-item animate-scroll stagger-item">
+                        <img src="https://www.ulcdn.net/media/web-home-popular-categories/Deal_Zone.png?1727341555" alt="Decor">
+                        <p>Home Decor</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="product-listing-section section-padding" id="our-products">
+             <div class="container">
+                <h5 class="section-title animate-scroll">New Season. New Silhouettes. New Comfort.</h5>
+                <p class="section-subtitle animate-scroll">Scroll less, style more — shop smart with filters that bring your vibe to life.</p>
+                
+                <div class="product-filters animate-scroll">
+                    <button class="filter-btn active" data-category="All">All Products</button>
+                    <button class="filter-btn" data-category="Sofa">Sofas</button>
+                    <button class="filter-btn" data-category="Bed">Beds</button>
+                    <button class="filter-btn" data-category="Chair">Chairs</button>
+                    <button class="filter-btn" data-category="Table">Tables</button>
+                    <button class="filter-btn" data-category="Swing">Swings</button>
+                    <button class="filter-btn" data-category="Planter">Planters</button>
+                </div>
+
+                <div class="product-grid" id="product-listing-grid">
+                    <!-- Products will be dynamically inserted here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <section class="landing-page-slider">
+            <div class="lps-track-container">
+                <div class="lps-background-text">Best Sellers</div>
+                <div class="lps-track">
+                    <div class="lps-slide">
+                        <div class="lps-image-wrapper">
+                            <img src="images/dup.png" alt="Vitra Chair - Classic Design">
+                        </div>
+                        <div class="lps-content">
+                            <p class="lps-subtitle">PRODUCT LANDING PAGE</p>
+                            <h2 class="lps-title">Vitra Chair –<br>Classic Design.</h2>
+                            <div class="lps-details">
+                                <div>
+                                    <span>DESIGNER:</span>
+                                    <p>Charles, Ray Eames</p>
+                                </div>
+                                <div>
+                                    <span>MATERIALS:</span>
+                                    <p>Wood, Leather, Metal</p>
+                                </div>
+                                <div>
+                                    <span>CLIENT:</span>
+                                    <p>Woodmart, Basel</p>
+                                </div>
+                            </div>
+                            <div class="lps-buy-area">
+                                <span class="lps-price">1999.00</span>
+                                <a href="#" class="lps-btn">ADD TO CART</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lps-slide">
+                        <div class="lps-image-wrapper">
+                            <img src="images/dupl.png" alt="Woodspot - Lamp by Seletti">
+                        </div>
+                        <div class="lps-content">
+                            <p class="lps-subtitle">PRODUCT LANDING PAGE</p>
+                            <h2 class="lps-title">Woodspot –<br>Lamp by Seletti.</h2>
+                            <div class="lps-details">
+                                <div>
+                                    <span>DESIGNER:</span>
+.                                    <p>Ghislain Magrite</p>
+                                </div>
+                                <div>
+                                    <span>MATERIALS:</span>
+                                    <p>Wood, Leather, Metal</p>
+                                </div>
+                                <div>
+                                    <span>CLIENT:</span>
+                                    <p>Woodmart, Basel</p>
+                                </div>
+                            </div>
+                            <div class="lps-buy-area">
+                                <span class="lps-price">₹240.00</span>
+                                <a href="#" class="lps-btn">ADD TO CART</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lps-slide">
+                        <div class="lps-image-wrapper">
+                            <img src="images/duple.png" alt="Woodspot - Modern Pattern">
+                        </div>
+                        <div class="lps-content">
+                            <p class="lps-subtitle">PRODUCT LANDING PAGE</p>
+                            <h2 class="lps-title">Woodspot –<br>Modern Pattern.</h2>
+                            <div class="lps-details">
+                                <div>
+                                    <span>DESIGNER:</span>
+                                    <p>Ghislain Magrite</p>
+                                </div>
+                                <div>
+                                    <span>MATERIALS:</span>
+                                    <p>Wood, Ceramic, Metal</p>
+                                </div>
+                                <div>
+                                    <span>CLIENT:</span>
+                                    <p>Woodmart, Basel</p>
+                                </div>
+                            </div>
+                            <div class="lps-buy-area">
+                                <span class="lps-price">₹299.00</span>
+                                <a href="#" class="lps-btn">ADD TO CART</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="lps-arrow prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="lps-arrow next"><i class="fas fa-chevron-right"></i></button>
+            <div class="lps-dots">
+                <!-- Dots will be generated by JavaScript -->
+            </div>
+        </section>
+        
+        <section class="parallax-banner" style="background-image: url('https://www.ulcdn.net/media/Collection/listings/Terra_homepage_Main.png?1746796540');">
+             <div class="container parallax-content">
+                <h2 class="animate-scroll">Crafted with Care, Inspired by Nature</h2>
+                <p class="animate-scroll stagger-item">
+                    At Iron Street, every piece tells a story of sustainability and artistry. We believe in creating beautiful, functional furniture that's kind to our planet.
+                </p>
+                <a href="#" class="btn btn-primary animate-scroll stagger-item">Learn About Our Process</a>
+            </div>
+        </section>
+
+        <section class="testimonials-section section-padding">
+            <div class="container">
+                <h2 class="section-title animate-scroll">Our Amazing Team</h2>
+                <div class="testimonial-slider-container">
+                    <div class="testimonial-slider-track">
+                        <div class="testimonial-card animate-scroll stagger-item">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Customer Priya S." class="testimonial-avatar">
+                            <p class="testimonial-text">"Absolutely love my new reclaimed wood table! The quality is fantastic and it feels good knowing it's sustainable."</p>
+                            <h4 class="testimonial-author">- Priya S., Bangalore</h4>
+                        </div>
+                        <div class="testimonial-card animate-scroll stagger-item">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer Rohan K." class="testimonial-avatar">
+                            <p class="testimonial-text">"The organic cotton armchair is so comfortable and stylish. Iron Street has become my go-to for conscious home decor."</p>
+                            <h4 class="testimonial-author">- Rohan K., Mumbai</h4>
+                        </div>
+                        <div class="testimonial-card animate-scroll stagger-item">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer Anjali M." class="testimonial-avatar">
+                            <p class="testimonial-text">"Fast delivery and excellent customer service. The bamboo bookshelf was easy to assemble and looks perfect in my study."</p>
+                            <h4 class="testimonial-author">- Anjali M., Delhi</h4>
+                        </div>
+                         <div class="testimonial-card animate-scroll stagger-item">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Customer Vikram P." class="testimonial-avatar">
+                            <p class="testimonial-text">"Impressed with the craftsmanship and the eco-friendly mission. My office now feels both productive and green!"</p>
+                            <h4 class="testimonial-author">- Vikram P., Chennai</h4>
+                        </div>
+                    </div>
+                    <button class="testimonial-slider-control prev" aria-label="Previous testimonial"><i class="fas fa-chevron-left"></i></button>
+                    <button class="testimonial-slider-control next" aria-label="Next testimonial"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column animate-scroll stagger-item">
+                    <h4>Iron Street</h4>
+                    <ul>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Sustainability Pledge</a></li>
+                        <li><a href="#">Join Our Team</a></li>
+                        <li><a href="#">Press & Media</a></li>
+                        <li><a href="#">iron-Inspiration Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column animate-scroll stagger-item">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Help & FAQs</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping & Delivery</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li> 
+                        <li><a href="#">Warranty Information</a></li>
+                         <li><a href="#">Track Your Order</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column animate-scroll stagger-item">
+                    <h4>Connect With Us</h4>
+                    <p><i class="fas fa-phone"></i> +91 12345 67890</p>
+                    <p><i class="fas fa-envelope"></i> ironstreet24@gmail.com</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                     <h4 style="margin-top:20px;">Stay Inspired</h4>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email for eco tips & offers" aria-label="Newsletter email input">
+                        <button type="submit" class="btn btn-primary" aria-label="Subscribe to newsletter"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+                <div class="footer-column animate-scroll stagger-item">
+                    <h4>Our iron-Promise</h4>
+                    <p>Dedicated to enriching homes with sustainable, high-quality furniture and decor that respects our planet.
+                    <br><br>
+                    <img src="iron_logo.png" alt="Eco Crafters Mini Logo" style="height: 30px; opacity: 0.7;">
+                    </p>
+                    <h4>Get The App</h4>
+                    <div class="app-badges-container">
+                        <a href="#" class="app-badge-link"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" class="app-badge"></a>
+                        <a href="#" class="app-badge-link"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" class="app-badge"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-links-section">
+                    <p><strong>Popular Categories:</strong> Reclaimed Wood Furniture, Organic Textiles, Bamboo Decor, Sustainable Lighting...</p>
+                    <p><strong>Shop By Room:</strong> iron Living Room, Natural Bedroom, Green Dining Spaces, Conscious Office...</p>
+                </div>
+                <div class="payment-methods">
+                    <p>Secure Payments:</p>
+                    <img src="https://checkout.razorpay.com/v1/razorpay-logo.svg" alt="Razorpay Secure Payments" style="height: 25px; filter: brightness(0) invert(0.7);">
+                </div>
+                <p class="copyright">© <span id="currentYear">2024</span> iron Crafters. All Rights Reserved. Crafted with <i class="fas fa-heart"></i> for a Greener World.</p>
+            </div>
+        </div>
+        
+    </footer>
+    
+    <h1>
+         </h1>
+
+    <script src="naaz.js"></script> 
+</body>
+</html>

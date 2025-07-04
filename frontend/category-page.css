@@ -1,0 +1,33 @@
+/* Styles for the category pages */
+
+.category-hero {
+    background-color: var(--eco-light-gray);
+    padding: 60px 0;
+    text-align: center;
+    border-bottom: 1px solid var(--eco-medium-gray);
+}
+
+.category-hero h1 {
+    font-family: var(--font-headings);
+    font-size: 3em;
+    color: var(--eco-dark-gray);
+    margin-bottom: 10px;
+}
+
+.category-hero p {
+    font-size: 1.1em;
+    color: var(--eco-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.category-product-listing .section-title {
+    text-align: left;
+    font-size: 2.2em;
+    margin-bottom: 30px;
+}
+
+.category-product-listing .section-title::after {
+    margin: 15px 0 0; /* Align left */
+    transform-origin: left;
+}

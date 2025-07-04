@@ -1,0 +1,139 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background:url("Beautiful\ living\ room\ with\ minimalistic\ design\ _\ Premium\ Photo.jpg");
+     background-repeat: no-repeat;
+  background-size: cover;
+    color: #333;
+}
+
+.sofa-category-section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.sofa-category-section h2 {
+    font-size: 28px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.category-description {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.read-more {
+    color: #cd622a; /* WoodenStreet Orange */
+    text-decoration: none;
+    font-weight: 500;
+}
+.read-more:hover {
+    text-decoration: underline;
+}
+
+.sofa-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 items per row */
+    gap: 30px 20px; /* Row gap and column gap */
+    justify-items: center;
+}
+
+.sofa-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none; /* If these items become links */
+    color: #333;
+}
+
+.sofa-image-container {
+    width: 150px; /* Diameter of the circle */
+    height: 150px; /* Diameter of the circle */
+    border-radius: 50%;
+    overflow: hidden; /* Clips the image to the circle */
+    margin-bottom: 15px;
+    background-color: #f0f0f0; /* Light placeholder background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sofa-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sofa-item:hover .sofa-image-container {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.sofa-label {
+    font-size: 15px;
+    font-weight: 500;
+    color: #444;
+}
+
+@media (max-width: 1200px) {
+    .sofa-grid {
+        grid-template-columns: repeat(5, 1fr); 
+    }
+}
+
+@media (max-width: 992px) {
+    .sofa-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .sofa-image-container {
+        width: 130px;
+        height: 130px;
+    }
+    .sofa-label {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sofa-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px 15px;
+    }
+    .sofa-category-section h2 {
+        font-size: 24px;
+    }
+    .category-description {
+        font-size: 15px;
+        margin-bottom: 30px;
+    }
+    .sofa-image-container {
+        width: 110px;
+        height: 110px;
+    }
+}
+
+@media (max-width: 576px) {
+    .sofa-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px 10px;
+    }
+    .sofa-image-container {
+        width: 120px; 
+        height: 120px;
+    }
+    .sofa-label {
+        font-size: 13px;
+    }
+}

@@ -1,0 +1,1783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Living Room Furniture | LuxeLiving</title>
+    <meta name="description" content="Discover our collection of designer living room furniture. Sofas, coffee tables, lighting, and decor crafted for comfort and style.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome (for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- ==================================================== -->
+    <!-- =================== CSS STYLES =================== -->
+    <!-- ==================================================== -->
+    <style>
+        /* TABLE OF CONTENTS
+        1.  Global Styles & Variables
+        2.  Preloader & Custom Cursor
+        3.  Header & Navigation
+        4.  Hero Section & Slider
+        5.  Utility & Animation Classes
+        6.  Section: Shop The Look
+        7.  Section: Product Collection
+        8.  Section: Inspiration (Horizontal Scroll)
+        9.  Section: Testimonials
+        10. Footer
+        11. Responsive Media Queries
+        */
+
+        /* 1. GLOBAL STYLES & VARIABLES */
+        :root {
+            --color-primary: #8B4513; /* SaddleBrown - a warm, rich brown */
+            --color-secondary: #D2B48C; /* Tan */
+            --color-accent: #5F9EA0; /* CadetBlue - a muted teal */
+            --color-dark: #2F2F2F;
+            --color-light: #F5F5F5;
+            --color-white: #FFFFFF;
+            --font-primary: 'Montserrat', sans-serif;
+            --font-secondary: 'Playfair Display', serif;
+            --header-height: 80px;
+            --border-radius: 8px;
+            --transition-speed: 0.4s;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--color-light);
+            color: var(--color-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            cursor: none; /* Hide default cursor */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 90px 0; /* Adjusted spacing */
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-secondary);
+            font-weight: 700;
+            color: var(--color-dark);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--color-primary);
+            transition: color var(--transition-speed) ease;
+        }
+
+        a:hover {
+            color: var(--color-accent);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all var(--transition-speed) ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--color-dark);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title span {
+            font-family: var(--font-primary);
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            line-height: 1.2;
+        }
+
+        /* 2. PRELOADER & CUSTOM CURSOR */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 10000;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .preloader-logo {
+            font-family: var(--font-secondary);
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+        }
+
+        .preloader-bar {
+            width: 150px;
+            height: 3px;
+            background: var(--color-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+        .preloader-bar::after {
+            content: '';
+            position: absolute;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--color-primary);
+            animation: preload-anim 2s infinite linear;
+        }
+
+        @keyframes preload-anim {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .cursor-dot, .cursor-outline {
+            pointer-events: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        body:hover .cursor-dot, body:hover .cursor-outline {
+            opacity: 1;
+        }
+
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--color-primary);
+            transition: transform 0.15s ease-out;
+        }
+
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--color-secondary);
+            transition: transform 0.2s ease-out, width 0.3s, height 0.3s;
+        }
+
+        .cursor-hovered .cursor-outline {
+            transform: translate(-50%, -50%) scale(1.5);
+            background-color: rgba(139, 69, 19, 0.2);
+            border-color: transparent;
+        }
+        .cursor-hovered .cursor-dot {
+            opacity: 0;
+        }
+
+
+        /* 3. HEADER & NAVIGATION */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .main-header.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .nav-logo {
+            font-family: var(--font-secondary);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-link {
+            color: var(--color-dark);
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-primary);
+            transition: width var(--transition-speed) ease;
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-icons a {
+            font-size: 1.2rem;
+            color: var(--color-dark);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--color-dark);
+            transition: all 0.3s ease-in-out;
+        }
+
+
+        /* 4. HERO SECTION & SLIDER */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-white);
+            position: relative;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 2;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 3;
+        }
+        
+        .hero-slide .hero-title,
+        .hero-slide .hero-subtitle,
+        .hero-slide .hero-description,
+        .hero-slide .btn {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .hero-slide.active .hero-title { transition-delay: 0.4s; }
+        .hero-slide.active .hero-subtitle { transition-delay: 0.6s; }
+        .hero-slide.active .hero-description { transition-delay: 0.8s; }
+        .hero-slide.active .btn { transition-delay: 1s; }
+
+        .hero-slide.active .hero-title,
+        .hero-slide.active .hero-subtitle,
+        .hero-slide.active .hero-description,
+        .hero-slide.active .btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-white);
+            font-weight: 400;
+        }
+
+        .hero-subtitle {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-white);
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-content .btn-primary {
+            border-color: var(--color-white);
+            background-color: var(--color-white);
+            color: var(--color-primary);
+        }
+        .hero-content .btn-primary:hover {
+            background: transparent;
+            color: var(--color-white);
+        }
+
+        .hero-slider-nav {
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            right: 20px;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            z-index: 10;
+        }
+
+        .hero-nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: var(--color-white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-nav-btn:hover {
+            background: var(--color-white);
+            color: var(--color-primary);
+        }
+
+        .hero-pagination {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .hero-pagination-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .hero-pagination-dot.active {
+            background: var(--color-white);
+            transform: scale(1.2);
+        }
+
+        .scroll-down-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+            z-index: 5;
+            opacity: 0;
+            animation-delay: 2.5s;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); opacity: 1; }
+            40% { transform: translateY(-20px) translateX(-50%); }
+            60% { transform: translateY(-10px) translateX(-50%); }
+        }
+
+
+        /* 5. UTILITY & ANIMATION CLASSES */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* 6. SECTION: SHOP THE LOOK */
+        .shop-the-look-section {
+            background: var(--color-white);
+        }
+
+        .shop-the-look-container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .look-image {
+            transition: transform 0.5s ease;
+        }
+        
+        .shop-the-look-container:hover .look-image {
+            transform: scale(1.03);
+        }
+
+        .hotspot {
+            position: absolute;
+            transform: translate(-50%, -50%);
+        }
+
+        .hotspot-pulse {
+            width: 20px;
+            height: 20px;
+            background: var(--color-white);
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+        }
+
+        .hotspot-pulse::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--color-white);
+            border-radius: 50%;
+            animation: pulse-animation 2s infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes pulse-animation {
+            0% { transform: scale(1); opacity: 0.7; }
+            70% { transform: scale(2.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+
+        .hotspot-tooltip {
+            position: absolute;
+            bottom: 150%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-white);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 280px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, transform 0.3s, bottom 0.3s;
+            pointer-events: none;
+        }
+
+        .hotspot:hover .hotspot-tooltip {
+            opacity: 1;
+            visibility: visible;
+            bottom: 180%;
+            pointer-events: auto;
+        }
+
+        .hotspot-tooltip img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .hotspot-tooltip h4 {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .hotspot-tooltip p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--color-dark);
+        }
+        .hotspot-tooltip a {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+
+        /* 7. SECTION: PRODUCT COLLECTION */
+        .product-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .filter-btn {
+            background: none;
+            border: 1px solid var(--color-secondary);
+            color: var(--color-dark);
+            padding: 10px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--color-white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.4s ease;
+            transform-origin: center;
+        }
+        
+        .product-card.hide {
+            transform: scale(0.8);
+            opacity: 0;
+            pointer-events: none;
+            height: 0;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: none;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .product-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--color-accent);
+            color: var(--color-white);
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .product-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+            transform: translateY(100%);
+            opacity: 0;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            text-align: center;
+        }
+
+        .product-card:hover .product-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-name {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .product-price {
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+
+        /* 8. SECTION: INSPIRATION (HORIZONTAL SCROLL) */
+        .inspiration-section {
+            background: var(--color-white);
+            overflow: hidden; /* Crucial for horizontal scroll effect */
+        }
+        
+        /* This wrapper will have a fixed height and will be what triggers the scroll animation */
+        .inspiration-container-wrapper {
+            height: 200vh; /* ADJUSTED: Reduced from 300vh to make the scroll faster and reduce space */
+            position: relative;
+        }
+
+        /* This container is sticky and holds the horizontally scrolling content */
+        .inspiration-container {
+            display: flex;
+            gap: 30px;
+            position: sticky;
+            top: calc(50vh - 225px); /* Vertically center the cards */
+            padding: 0 5vw; /* Start/end padding */
+            will-change: transform; /* Performance boost */
+            height: 450px;
+            align-items: center;
+        }
+
+        .inspiration-card {
+            flex: 0 0 350px; /* Do not grow or shrink, fixed width */
+            background: var(--color-light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            height: 400px;
+        }
+
+        .inspiration-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+
+        .inspiration-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .inspiration-content {
+            padding: 25px;
+        }
+
+        .inspiration-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .inspiration-content p {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .inspiration-content a {
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .inspiration-content a i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        .inspiration-content a:hover i {
+            transform: translateX(5px);
+        }
+
+
+        /* 9. SECTION: TESTIMONIALS */
+        .testimonials-section {
+            background-color: var(--color-light);
+            padding-bottom: 110px; /* Adjusted space for nav buttons */
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonials-section::before {
+            content: '“';
+            font-family: var(--font-secondary);
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 20rem;
+            color: rgba(139, 69, 19, 0.05);
+            z-index: 0;
+            line-height: 1;
+        }
+        
+        .testimonial-slider-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+        }
+
+        .testimonial-slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .testimonial-slide {
+            flex: 0 0 100%;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .testimonial-slide img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 4px solid var(--color-white);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-slide blockquote {
+            font-family: var(--font-secondary);
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.4;
+            margin-bottom: 20px;
+            color: var(--color-dark);
+        }
+
+        .testimonial-slide cite {
+            font-family: var(--font-primary);
+            font-weight: 700;
+            font-style: normal;
+            color: var(--color-accent);
+        }
+
+        .slider-nav {
+            position: absolute;
+            bottom: -55px; /* Positioned below slider */
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+        }
+
+        .slider-nav button {
+            background: var(--color-white);
+            border: 1px solid var(--color-secondary);
+            color: var(--color-primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .slider-nav button:hover {
+            background: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+        }
+
+
+        /* 10. FOOTER */
+        .main-footer {
+            background-color: var(--color-dark);
+            color: var(--color-light);
+            padding: 80px 0 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-col h4 {
+            color: var(--color-white);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo {
+            font-family: var(--font-secondary);
+            font-size: 1.8rem;
+        }
+        
+        .footer-col p {
+            color: #ccc;
+            line-height: 1.7;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul a {
+            color: #ccc;
+            transition: color 0.3s, padding-left 0.3s;
+        }
+
+        .footer-col ul a:hover {
+            color: var(--color-white);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: var(--color-light);
+            font-size: 1.1rem;
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #555;
+            border-radius: 50%;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--color-primary);
+            border-color: var(--color-primary);
+            color: var(--color-white);
+        }
+        
+        .newsletter-form {
+            position: relative;
+            margin-top: 15px;
+        }
+        
+        .newsletter-form input {
+            width: 100%;
+            padding: 12px 50px 12px 15px;
+            background: #444;
+            border: 1px solid #555;
+            border-radius: var(--border-radius);
+            color: var(--color-white);
+        }
+        
+        .newsletter-form button {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 50px;
+            background: var(--color-primary);
+            border: none;
+            color: var(--color-white);
+            cursor: pointer;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        
+        .footer-bottom {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        .footer-bottom ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-bottom ul a {
+            color: #aaa;
+        }
+
+
+        /* 11. RESPONSIVE MEDIA QUERIES */
+        @media (max-width: 992px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: var(--header-height);
+                flex-direction: column;
+                background-color: var(--color-white);
+                width: 100%;
+                height: calc(100vh - var(--header-height));
+                text-align: center;
+                transition: 0.3s;
+                gap: 0;
+                overflow-y: auto;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-item {
+                padding: 20px 0;
+                border-bottom: 1px solid #eee;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            .hero-title { font-size: 3.5rem; }
+            .hero-subtitle { font-size: 2.2rem; }
+            
+            .section-title h2 { font-size: 2.5rem; }
+        }
+
+        @media (max-width: 768px) {
+            body { cursor: auto; }
+            .cursor-dot, .cursor-outline { display: none; }
+            
+            .hero-title { font-size: 2.8rem; }
+            .hero-subtitle { font-size: 1.8rem; }
+            .hero-description { font-size: 1rem; }
+            
+            .hero-slider-nav { display: none; } /* Hide arrows on mobile for cleaner look */
+            .hero-pagination { bottom: 60px; }
+            .scroll-down-indicator { bottom: 20px; }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .inspiration-container-wrapper { height: auto; }
+            .inspiration-container {
+                position: static;
+                flex-direction: column;
+                height: auto;
+                align-items: stretch;
+                transform: none !important; /* Disable JS transform on mobile */
+            }
+            .inspiration-card {
+                flex: 1 1 auto;
+            }
+
+            .testimonial-slide blockquote { font-size: 1.2rem; }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            section { padding: 70px 0; }
+            .section-title h2 { font-size: 2rem; }
+            .hotspot-tooltip {
+                width: 240px;
+                flex-direction: column;
+                text-align: center;
+            }
+            .hotspot:hover .hotspot-tooltip {
+                 bottom: 120%;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- PRELOADER -->
+    <div class="preloader">
+        <div class="preloader-logo">LuxeLiving</div>
+        <div class="preloader-bar"></div>
+    </div>
+
+    <!-- CUSTOM CURSOR -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- HEADER -->
+    <header class="main-header">
+        <nav class="navbar">
+            <a href="#" class="nav-logo">LuxeLiving</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link active">Living Room</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Bedroom</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Dining</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Inspiration</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="#" aria-label="Search"><i class="fas fa-search"></i></a>
+                <a href="#" aria-label="Shopping Cart"><i class="fas fa-shopping-bag"></i></a>
+                <a href="#" aria-label="User Account"><i class="fas fa-user"></i></a>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero-section">
+            <div class="hero-slider">
+                <div class="hero-slide active" style="background-image: url('https://placehold.co/1920x1080/8B4513/F5F5F5?text=Scene+1');">
+                    <div class="hero-content">
+                        <h1 class="hero-title">Crafted Comfort,</h1>
+                        <h2 class="hero-subtitle">Designed for Life.</h2>
+                        <p class="hero-description">Explore our exclusive collection of living room pieces that blend timeless elegance with modern living.</p>
+                        <a href="#collections" class="btn btn-primary">Explore Collections</a>
+                    </div>
+                </div>
+                <div class="hero-slide" style="background-image: url('https://placehold.co/1920x1080/5F9EA0/F5F5F5?text=Scene+2');">
+                     <div class="hero-content">
+                        <h1 class="hero-title">Timeless Designs,</h1>
+                        <h2 class="hero-subtitle">Future Classics.</h2>
+                        <p class="hero-description">Discover furniture that tells a story and becomes a part of yours.</p>
+                        <a href="#collections" class="btn btn-primary">View New Arrivals</a>
+                    </div>
+                </div>
+                <div class="hero-slide" style="background-image: url('https://placehold.co/1920x1080/D2B48C/2F2F2F?text=Scene+3');">
+                    <div class="hero-content">
+                        <h1 class="hero-title">Your Vision,</h1>
+                        <h2 class="hero-subtitle">Our Craftsmanship.</h2>
+                        <p class="hero-description">From statement sofas to subtle accents, find everything you need to create your perfect space.</p>
+                        <a href="#shop-the-look" class="btn btn-primary">Get Inspired</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-slider-nav">
+                <button class="hero-nav-btn prev" aria-label="Previous Slide"><i class="fas fa-chevron-left"></i></button>
+                <button class="hero-nav-btn next" aria-label="Next Slide"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="hero-pagination"></div>
+
+            <div class="scroll-down-indicator">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
+
+        <!-- SHOP THE LOOK SECTION -->
+        <section class="shop-the-look-section" id="shop-the-look">
+            <div class="container">
+                <div class="section-title animate-on-scroll">
+                    <span>Interactive Showcase</span>
+                    <h2>Shop The Look</h2>
+                </div>
+                <div class="shop-the-look-container">
+                    <img src="https://placehold.co/1000x650/F5F5F5/2F2F2F?text=Styled+Living+Room" alt="A beautifully styled living room" class="look-image">
+                    
+                    <!-- Hotspot 1: Sofa -->
+                    <div class="hotspot" style="top: 55%; left: 40%;">
+                        <div class="hotspot-pulse"></div>
+                        <div class="hotspot-tooltip">
+                            <img src="https://placehold.co/60x60/8B4513/FFFFFF" alt="Sofa">
+                            <div>
+                                <h4>The Haven Sofa</h4>
+                                <p>$2,499.00</p>
+                                <a href="#">Quick View</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hotspot 2: Coffee Table -->
+                    <div class="hotspot" style="top: 75%; left: 50%;">
+                        <div class="hotspot-pulse"></div>
+                        <div class="hotspot-tooltip">
+                            <img src="https://placehold.co/60x60/D2B48C/2F2F2F" alt="Coffee Table">
+                            <div>
+                                <h4>Oak Horizon Table</h4>
+                                <p>$799.00</p>
+                                <a href="#">Quick View</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hotspot 3: Floor Lamp -->
+                    <div class="hotspot" style="top: 40%; left: 80%;">
+                        <div class="hotspot-pulse"></div>
+                        <div class="hotspot-tooltip">
+                            <img src="https://placehold.co/60x60/5F9EA0/FFFFFF" alt="Floor Lamp">
+                             <div>
+                                <h4>Arc Floor Lamp</h4>
+                                <p>$349.00</p>
+                                <a href="#">Quick View</a>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Hotspot 4: Rug -->
+                    <div class="hotspot" style="top: 85%; left: 35%;">
+                        <div class="hotspot-pulse"></div>
+                        <div class="hotspot-tooltip">
+                            <img src="https://placehold.co/60x60/2F2F2F/FFFFFF" alt="Rug">
+                            <div>
+                                <h4>Moroccan Wool Rug</h4>
+                                <p>$599.00</p>
+                                <a href="#">Quick View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COLLECTIONS / PRODUCTS SECTION -->
+        <section id="collections" class="product-section">
+            <div class="container">
+                <div class="section-title animate-on-scroll">
+                    <span>Our Collection</span>
+                    <h2>Find Your Centerpiece</h2>
+                </div>
+
+                <div class="product-filters animate-on-scroll">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="sofas">Sofas</button>
+                    <button class="filter-btn" data-filter="tables">Tables</button>
+                    <button class="filter-btn" data-filter="lighting">Lighting</button>
+                    <button class="filter-btn" data-filter="decor">Decor</button>
+                </div>
+
+                <div class="product-grid">
+                    <!-- Product Items -->
+                    <div class="product-card animate-on-scroll" data-category="sofas">
+                        <div class="product-image">
+                            <img src="https://placehold.co/400x400/5F9EA0/FFFFFF?text=Sofa" alt="Velvet Green Sofa">
+                            <div class="product-overlay">
+                                <a href="#" class="btn btn-secondary">Add to Cart</a>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Emerald Velvet Sofa</h3>
+                            <p class="product-price">$1,899.00</p>
+                        </div>
+                    </div>
+
+                    <div class="product-card animate-on-scroll" data-category="tables">
+                        <div class="product-image">
+                            <img src="https://placehold.co/400x400/FFFFFF/2F2F2F?text=Table" alt="Marble Coffee Table">
+                            <div class="product-overlay">
+                                <a href="#" class="btn btn-secondary">Add to Cart</a>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Carrara Marble Table</h3>
+                            <p class="product-price">$950.00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card animate-on-scroll" data-category="lighting">
+                        <div class="product-image">
+                            <img src="https://placehold.co/400x400/D2B48C/2F2F2F?text=Light" alt="Modern Pendant Light">
+                            <div class="product-overlay">
+                                <a href="#" class="btn btn-secondary">Add to Cart</a>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Globe Pendant Light</h3>
+                            <p class="product-price">$275.00</p>
+                        </div>
+                    </div>
+
+                     <div class="product-card animate-on-scroll" data-category="sofas">
+                        <div class="product-image">
+                            <img src="https://placehold.co/400x400/8B4513/FFFFFF?text=Armchair" alt="Leather Armchair">
+                             <span class="product-badge">New</span>
+                            <div class="product-overlay">
+                                <a href="#" class="btn btn-secondary">Add to Cart</a>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Cognac Leather Armchair</h3>
+                            <p class="product-price">$1,250.00</p>
+                        </div>
+                    </div>
+
+                    <div class="product-card animate-on-scroll" data-category="decor">
+                        <div class="product-image">
+                            <img src="https://placehold.co/400x400/2F2F2F/FFFFFF?text=Art" alt="Abstract Wall Art">
+                            <div class="product-overlay">
+                                <a href="#" class="btn btn-secondary">Add to Cart</a>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">"Horizons" Wall Art</h3>
+                            <p class="product-price">$450.00</p>
+                        </div>
+                    </div>
+                    
+                     <div class="product-card animate-on-scroll" data-category="tables">
+                        <div class="product-image">
+                            <img src="https://placehold.co/400x400/F5F5F5/2F2F2F?text=Side+Table" alt="Wooden Side Table">
+                            <div class="product-overlay">
+                                <a href="#" class="btn btn-secondary">Add to Cart</a>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Solid Walnut Side Table</h3>
+                            <p class="product-price">$320.00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INSPIRATION SECTION (HORIZONTAL SCROLL) -->
+        <section class="inspiration-section">
+            <div class="container">
+                <div class="section-title animate-on-scroll">
+                    <span>Design Ideas</span>
+                    <h2>Get Inspired</h2>
+                </div>
+            </div>
+            <div class="inspiration-container-wrapper">
+                <div class="inspiration-container">
+                    <article class="inspiration-card">
+                        <img src="https://placehold.co/350x220/F5F5F5/2F2F2F?text=Minimalism" alt="Minimalist living room">
+                        <div class="inspiration-content">
+                            <h3>The Art of Minimalism</h3>
+                            <p>Discover how less can be more in your living space.</p>
+                            <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    <article class="inspiration-card">
+                        <img src="https://placehold.co/350x220/D2B48C/2F2F2F?text=Bohemian" alt="Bohemian style decor">
+                        <div class="inspiration-content">
+                            <h3>Bohemian Rhapsody</h3>
+                            <p>Embrace free-spirited design with textures and patterns.</p>
+                            <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    <article class="inspiration-card">
+                        <img src="https://placehold.co/350x220/8B4513/FFFFFF?text=Mid-Century" alt="Mid-century modern furniture">
+                        <div class="inspiration-content">
+                            <h3>Mid-Century Modern</h3>
+                            <p>A timeless look that's always in style. Here's how to get it.</p>
+                            <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    <article class="inspiration-card">
+                        <img src="https://placehold.co/350x220/2F2F2F/FFFFFF?text=Industrial" alt="Industrial loft living room">
+                        <div class="inspiration-content">
+                            <h3>Industrial Chic</h3>
+                            <p>Raw materials and exposed elements for a bold statement.</p>
+                            <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                     <article class="inspiration-card">
+                        <img src="https://placehold.co/350x220/5F9EA0/FFFFFF?text=Coastal" alt="Coastal living room design">
+                        <div class="inspiration-content">
+                            <h3>Coastal Calm</h3>
+                            <p>Bring the beach to your home with light and airy designs.</p>
+                            <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS SECTION -->
+        <section class="testimonials-section">
+            <div class="container">
+                <div class="section-title animate-on-scroll">
+                    <span>From Our Customers</span>
+                    <h2>Spaces Transformed</h2>
+                </div>
+                <div class="testimonial-slider-container">
+                    <div class="testimonial-slider">
+                        <div class="testimonial-slide">
+                            <img src="https://placehold.co/100x100/D2B48C/FFFFFF?text=S+L" alt="Customer photo">
+                            <blockquote>"The quality is just outstanding. Our living room feels like a 5-star hotel now. LuxeLiving completely transformed our space!"</blockquote>
+                            <cite>- Sarah & Tom L.</cite>
+                        </div>
+                        <div class="testimonial-slide">
+                             <img src="https://placehold.co/100x100/5F9EA0/FFFFFF?text=M+B" alt="Customer photo">
+                            <blockquote>"I was hesitant to buy a sofa online, but the process was seamless and the Haven Sofa is more beautiful in person. Worth every penny."</blockquote>
+                            <cite>- Michael B.</cite>
+                        </div>
+                        <div class="testimonial-slide">
+                             <img src="https://placehold.co/100x100/8B4513/FFFFFF?text=J+R" alt="Customer photo">
+                            <blockquote>"Incredible customer service and the delivery was flawless. The furniture has become the centerpiece of our home."</blockquote>
+                            <cite>- Jessica R.</cite>
+                        </div>
+                    </div>
+                    <div class="slider-nav">
+                        <button class="prev" aria-label="Previous Testimonial"><i class="fas fa-chevron-left"></i></button>
+                        <button class="next" aria-label="Next Testimonial"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4 class="footer-logo">LuxeLiving</h4>
+                    <p>Crafting timeless furniture for the modern home. Quality, comfort, and style, delivered.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                 <div class="footer-col">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="#">Living Room</a></li>
+                        <li><a href="#">Bedroom</a></li>
+                        <li><a href="#">Dining</a></li>
+                        <li><a href="#">Outdoor</a></li>
+                        <li><a href="#">Decor & Lighting</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Care Instructions</a></li>
+                        <li><a href="#">Warranty</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Join our mailing list for exclusive offers and design inspiration.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" aria-label="Subscribe"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 LuxeLiving. All Rights Reserved.</p>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- ==================================================== -->
+    <!-- =============== JAVASCRIPT LOGIC ================= -->
+    <!-- ==================================================== -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // --- 1. PRELOADER ---
+        const preloader = document.querySelector('.preloader');
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                preloader.classList.add('hidden');
+            }, 500); // Small delay to ensure content is ready
+        });
+
+        // --- 2. CUSTOM CURSOR ---
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+            
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        const hoverElements = document.querySelectorAll('a, button, .hotspot-pulse');
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                document.body.classList.add('cursor-hovered');
+            });
+            el.addEventListener('mouseleave', () => {
+                document.body.classList.remove('cursor-hovered');
+            });
+        });
+
+        // --- 3. HEADER & NAVIGATION ---
+        const header = document.querySelector('.main-header');
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        // Sticky header
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Hamburger menu toggle
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }));
+
+        // --- 4. HERO SLIDER ---
+        const heroSlider = document.querySelector('.hero-slider');
+        if (heroSlider) {
+            const slides = document.querySelectorAll('.hero-slide');
+            const nextBtn = document.querySelector('.hero-nav-btn.next');
+            const prevBtn = document.querySelector('.hero-nav-btn.prev');
+            const paginationContainer = document.querySelector('.hero-pagination');
+            const slideCount = slides.length;
+            let currentIndex = 0;
+            let sliderInterval;
+
+            // Create pagination dots if container exists
+            if (paginationContainer) {
+                for (let i = 0; i < slideCount; i++) {
+                    const dot = document.createElement('button');
+                    dot.classList.add('hero-pagination-dot');
+                    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+                    dot.addEventListener('click', () => {
+                        goToSlide(i);
+                        resetInterval();
+                    });
+                    paginationContainer.appendChild(dot);
+                }
+            }
+            const paginationDots = document.querySelectorAll('.hero-pagination-dot');
+
+            const goToSlide = (index) => {
+                // Remove active class from the current slide and dot
+                slides[currentIndex].classList.remove('active');
+                if (paginationDots.length > 0) {
+                    paginationDots[currentIndex].classList.remove('active');
+                }
+
+                // Update index, wrapping around if necessary
+                if (index < 0) {
+                    currentIndex = slideCount - 1;
+                } else if (index >= slideCount) {
+                    currentIndex = 0;
+                } else {
+                    currentIndex = index;
+                }
+                
+                // Add active class to the new slide and dot
+                slides[currentIndex].classList.add('active');
+                if (paginationDots.length > 0) {
+                    paginationDots[currentIndex].classList.add('active');
+                }
+            };
+
+            const nextSlide = () => goToSlide(currentIndex + 1);
+            const prevSlide = () => goToSlide(currentIndex - 1);
+
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetInterval();
+            });
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                resetInterval();
+            });
+
+            const startInterval = () => {
+                // Auto-play every 7 seconds
+                sliderInterval = setInterval(nextSlide, 7000); 
+            };
+
+            const resetInterval = () => {
+                clearInterval(sliderInterval);
+                startInterval();
+            };
+
+            // Initialize first slide and start autoplay
+            goToSlide(0);
+            startInterval();
+        }
+
+        // --- 5. SCROLL-TRIGGERED ANIMATIONS (INTERSECTION OBSERVER) ---
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Optional: stop observing once animated
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        animatedElements.forEach(el => {
+            observer.observe(el);
+        });
+
+        // --- 6. PRODUCT FILTERING ---
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filterValue = btn.getAttribute('data-filter');
+                
+                productCards.forEach(card => {
+                    card.classList.add('hide'); // Hide all cards initially
+                    // Then show the correct ones with a slight delay for transition
+                    setTimeout(() => {
+                         if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                            card.classList.remove('hide');
+                        }
+                    }, 10);
+                });
+            });
+        });
+
+        // --- 7. HORIZONTAL SCROLLING INSPIRATION SECTION ---
+        const inspirationWrapper = document.querySelector('.inspiration-container-wrapper');
+        const inspirationContainer = document.querySelector('.inspiration-container');
+
+        if (inspirationContainer && window.matchMedia("(min-width: 769px)").matches) {
+            window.addEventListener('scroll', () => {
+                const wrapperRect = inspirationWrapper.getBoundingClientRect();
+                const wrapperTop = wrapperRect.top;
+                const wrapperHeight = wrapperRect.height;
+                // Recalculate scrollable width in case of resize
+                const scrollableWidth = inspirationContainer.scrollWidth - window.innerWidth;
+
+                if (wrapperTop <= 0 && wrapperTop > -wrapperHeight + window.innerHeight) {
+                    // Calculate scroll progress within the wrapper
+                    let progress = -wrapperTop / (wrapperHeight - window.innerHeight);
+                    progress = Math.max(0, Math.min(1, progress)); // Clamp between 0 and 1
+
+                    const moveX = -progress * scrollableWidth;
+                    inspirationContainer.style.transform = `translateX(${moveX}px)`;
+                }
+            });
+        }
+        
+        // --- 8. TESTIMONIAL SLIDER ---
+        const testimonialSlider = document.querySelector('.testimonial-slider');
+        
+        if (testimonialSlider) {
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const prevBtn = document.querySelector('.slider-nav .prev');
+            const nextBtn = document.querySelector('.slider-nav .next');
+            let currentIndex = 0;
+            const slideCount = slides.length;
+            let slideInterval;
+
+            const goToSlide = (index) => {
+                if (index < 0) index = slideCount - 1;
+                if (index >= slideCount) index = 0;
+                testimonialSlider.style.transform = `translateX(-${index * 100}%)`;
+                currentIndex = index;
+            };
+
+            const nextSlide = () => goToSlide(currentIndex + 1);
+            const prevSlide = () => goToSlide(currentIndex - 1);
+
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetInterval();
+            });
+            
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                resetInterval();
+            });
+
+            const startInterval = () => {
+                slideInterval = setInterval(nextSlide, 5000); // Auto-play every 5 seconds
+            };
+
+            const resetInterval = () => {
+                clearInterval(slideInterval);
+                startInterval();
+            };
+
+            startInterval();
+        }
+
+    });
+    </script>
+
+</body>
+</html>

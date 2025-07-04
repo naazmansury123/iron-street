@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iron Street - Launching Soon</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+    <style>
+        :root {
+            --text-primary: #1a1a1a;
+            --text-secondary: #555555;
+            --container-bg: #ffffff;
+            --highlight-color: #ffc107;
+            --input-bg: #f4f4f4;
+            --border-color: #dddddd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background-image: url('https://m.media-amazon.com/images/I/71u3F2NZ9gL.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .main-content {
+            width: 90%;
+            max-width: 600px;
+            padding: 40px;
+            text-align: center;
+            background: var(--container-bg);
+            color: var(--text-primary);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 1;
+        }
+        
+        @keyframes slideInDown {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes slideInUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .brand-name {
+            font-size: 7rem; /* Adjusted from 12rem which was likely a typo */
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px; /* Gap for logo */
+            animation: slideInDown 0.8s ease-out forwards;
+        }
+        
+        .brand-logo {
+            height: 1.2em; /* Adjusted for better scaling with font size */
+        }
+        
+        /* CHANGE: Added text next to the logo */
+        .brand-text {
+            color: var(--text-primary);
+        }
+
+        .maintenance-text {
+            background: rgba(255, 193, 7, 0.15);
+            color: #a1882c; 
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 25px;
+            font-weight: 500;
+            border: 1px solid rgba(255, 193, 7, 0.5);
+            animation: slideInDown 0.8s ease-out 0.2s forwards;
+            opacity: 0;
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            animation: slideInUp 0.8s ease-out 0.4s forwards;
+            opacity: 0;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            animation: slideInUp 0.8s ease-out 0.6s forwards;
+            opacity: 0;
+        }
+        
+        .countdown-item { display: flex; flex-direction: column; align-items: center; }
+        .countdown-item span {
+            font-size: 3.5rem;
+            font-weight: 600;
+            line-height: 1;
+        }
+        .countdown-item p {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: 300;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+        
+        .subscribe-prompt {
+             color: var(--text-secondary);
+             margin-bottom: 20px; /* Thoda space badhaya */
+             animation: slideInUp 0.8s ease-out 0.8s forwards;
+             opacity: 0;
+        }
+
+        .subscribe-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0; /* Margin upar se control ho raha hai */
+            gap: 10px;
+            animation: slideInUp 0.8s ease-out 1s forwards;
+            opacity: 0;
+        }
+
+        .input-wrapper { position: relative; flex-grow: 1; max-width: 350px; }
+        
+        #email-input {
+            width: 100%;
+            padding: 15px 20px 15px 50px;
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
+            background: var(--input-bg);
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        #email-input::placeholder { color: #888; }
+        #email-input:focus { outline: none; border-color: var(--highlight-color); }
+        .input-wrapper i { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: #888; }
+
+        .subscribe-form button {
+            padding: 15px 30px;
+            border-radius: 50px;
+            border: none;
+            background-color: var(--highlight-color);
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .subscribe-form button:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        
+        #form-message { margin-top: 15px; font-weight: 500; height: 20px; }
+
+        /* CHANGE: Social Icons ke liye naya CSS */
+        .social-icons {
+            margin-top: 30px; /* Form se doori banane ke liye */
+            display: flex;
+            justify-content: center;
+            gap: 25px; /* Icons ke beech ka space */
+            animation: slideInUp 0.8s ease-out 1.2s forwards;
+            opacity: 0;
+        }
+
+        .social-icons a {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--highlight-color);
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 600px) {
+            .brand-name { font-size: 2.5rem; }
+            .tagline { font-size: 1.2rem; }
+            .countdown-item span { font-size: 2.2rem; }
+            .subscribe-form { flex-direction: column; width: 100%; }
+            .input-wrapper { width: 100%; max-width: 100%; }
+            .subscribe-form button { width: 100%; }
+            .main-content { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="main-content">
+        <h1 class="brand-name">
+            <!-- Note: /frontend/images/aj.png ka path sahi hona chahiye -->
+            <img src="images/aj.png" alt="Iron Street Logo" class="brand-logo">
+            <!-- CHANGE: Logo ke saath text add kiya -->
+            
+        </h1>
+        
+        <p class="maintenance-text">
+            This site is currently under maintenance.
+        </p>
+
+        <h3 class="tagline">Our new website is coming soon.</h3>
+        
+        <div class="countdown">
+            <div class="countdown-item"><span id="days">06</span><p>Days</p></div>
+            <div class="countdown-item"><span id="hours">23</span><p>Hours</p></div>
+            <div class="countdown-item"><span id="minutes">59</span><p>Minutes</p></div>
+            <div class="countdown-item"><span id="seconds">34</span><p>Seconds</p></div>
+        </div>
+
+        <p class="subscribe-prompt">Be the first to know! Subscribe for updates.</p>
+        
+        <!-- Form ka alignment 'subscribe-prompt' ke neeche centered hai -->
+        <form id="subscribe-form" class="subscribe-form" action="#" method="POST">
+            <div class="input-wrapper">
+                <i class="fa-regular fa-envelope"></i>
+                <input type="email" name="email" id="email-input" placeholder="Enter your email" required>
+            </div>
+            <button type="submit" id="submit-btn">Notify Me</button>
+        </form>
+        
+        <p id="form-message"></p>
+        
+        <!-- CHANGE: Social Media Icons yahan add kiye gaye hain -->
+        <div class="social-icons">
+            <a href="https://www.facebook.com/Ironstreetfurniture" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+             <a href="https://www.instagram.com/ironstreet1/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+               <a href=" https://wa.me/message/Q5VZJ3P4TZX4N1" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+               <a href="https://in.pinterest.com/ironstreet69/" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+           
+        </div>
+    </div>
+
+    <script>
+    // --- JAVASCRIPT mein koi badlav nahi hai ---
+
+    const launchDate = new Date();
+    launchDate.setDate(launchDate.getDate() + 6);
+    launchDate.setHours(launchDate.getHours() + 23);
+
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = launchDate - now;
+        if (distance < 0) {
+            clearInterval(timerInterval);
+            document.querySelector('.countdown').innerHTML = "<h2>We are live now!</h2>";
+            return;
+        }
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        daysEl.innerText = String(days).padStart(2, '0');
+        hoursEl.innerText = String(hours).padStart(2, '0');
+        minutesEl.innerText = String(minutes).padStart(2, '0');
+        secondsEl.innerText = String(seconds).padStart(2, '0');
+    }
+    const timerInterval = setInterval(updateCountdown, 1000);
+    updateCountdown();
+    
+    </script>
+</body>
+</html>

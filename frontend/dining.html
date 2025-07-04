@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dining Furniture & Sets - IRON STREET</title>
+<!-- FONT & ICON FILES -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+<!-- ✅ ALL-IN-ONE CSS: All required styles are included here. -->
+<style>
+    /* --- 1. CORE & FOUNDATIONAL STYLES --- */
+    :root {
+        --eco-primary-accent: #ab241f;
+        --eco-text-primary: #3e3e40;
+        --eco-text-on-primary-accent: #FFFFFF;
+        --eco-light-gray: #f8f9fa;
+        --eco-medium-gray: #e9ecef;
+        --eco-dark-gray: #343a40; /* Darker gray for top bar */
+        --eco-footer-bg: #2b2b2b;
+        --eco-white: #FFFFFF;
+        --eco-text-secondary: #555555;
+        --border-radius-main: 8px;
+        --border-radius-small: 4px;
+        --box-shadow-light: 0 4px 15px rgba(0, 0, 0, 0.06);
+        --box-shadow-strong: 0 8px 25px rgba(0, 0, 0, 0.1);
+        --transition-main: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        --font-primary: 'Poppins', sans-serif;
+        --font-headings: 'Playfair Display', serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-primary); color: var(--eco-text-primary); background-color: var(--eco-white); }
+    .container { width: 90%; max-width: 1450px; /* Bada Page Layout */ margin: 0 auto; padding: 0 15px; }
+    a { text-decoration: none; color: var(--eco-primary-accent); }
+    ul { list-style: none; }
+    .btn { display: inline-block; padding: 10px 20px; border-radius: var(--border-radius-small); font-weight: 500; cursor: pointer; border: 1px solid transparent; transition: var(--transition-main); }
+    .btn:hover { transform: translateY(-2px); box-shadow: var(--box-shadow-light); }
+    #preloader { position: fixed; inset: 0; background: var(--eco-white); z-index: 9999; display: flex; align-items: center; justify-content: center; }
+    #loadingIcon { width: 80px; animation: pulse 1.5s infinite ease-in-out; }
+
+    /* --- 2. EXACT NAVBAR STYLES FROM YOUR SCREENSHOT --- */
+    .top-bar { background-color: var(--eco-dark-gray); color: var(--eco-light-gray); padding: 8px 0; font-size: 0.9em; }
+    .top-bar .container { display: flex; justify-content: space-between; align-items: center; }
+    .top-bar-promo-text { color: var(--eco-white); }
+    .top-bar-promo-text a { color: var(--eco-white); font-weight: bold; text-decoration: underline; margin-left: 5px; }
+    .top-bar-button { color: var(--eco-light-gray); background: transparent; border: 1px solid #6c757d; padding: 6px 15px; transition: var(--transition-main); }
+    .top-bar-button:hover { background-color: var(--eco-text-primary); border-color: var(--eco-text-primary); }
+    .top-bar-button i { margin-right: 8px; }
+    
+    header { background-color: var(--eco-white); padding: 20px 0 0; position: sticky; top: 0; z-index: 999; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+    .header-content { display: flex; justify-content: space-between; align-items: center; padding-bottom: 20px; border-bottom: 1px solid var(--eco-medium-gray); }
+    .logo-img { height: 40px; }
+    .search-bar { flex-grow: 1; margin: 0 40px; max-width: 600px; position: relative; }
+    .search-bar input { width: 100%; padding: 12px 45px 12px 20px; border: 1px solid var(--eco-medium-gray); border-radius: var(--border-radius-small); }
+    .search-bar button { position: absolute; right: 0; top: 0; height: 100%; background: transparent; border: none; padding: 0 15px; color: var(--eco-text-secondary); cursor: pointer; }
+    
+    .header-actions { display: flex; align-items: center; gap: 30px; }
+    .header-action-item { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: var(--eco-text-primary); }
+    .header-action-item i { font-size: 1.8em; color: var(--eco-primary-accent); margin-bottom: 5px; }
+    .header-action-item span { font-size: 0.85em; }
+    
+    .main-nav { background-color: var(--eco-white); }
+    .main-nav .container { display: flex; justify-content: center; }
+    .main-nav ul { display: flex; justify-content: center; }
+    .main-nav li a { padding: 15px 22px; color: var(--eco-text-primary); font-weight: 500; display: block; position: relative; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.9em; }
+    .main-nav li a::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; margin: auto; width: 0; height: 3px; background-color: var(--eco-primary-accent); transition: width 0.3s ease; }
+    .main-nav li a:hover, .main-nav li a.active { color: var(--eco-primary-accent); }
+    .main-nav li a:hover::after, .main-nav li a.active::after { width: 100%; }
+
+    /* --- 3. ENHANCED STYLES FOR DINING PAGE --- */
+    .category-hero { position: relative; height: 60vh; min-height: 500px; display: flex; align-items: center; justify-content: center; text-align: center; color: white; overflow: hidden; }
+    .category-hero .hero-background { position: absolute; inset: 0; background-size: cover; background-position: center; animation: kenBurns 20s infinite; }
+    .category-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 100%); z-index: 1; }
+    .category-hero-content { position: relative; z-index: 2; opacity: 0; animation: slideUpFadeIn 1s 0.5s ease-out forwards; }
+    .category-hero-content h1 { font-family: var(--font-headings); font-size: clamp(3rem, 6vw, 5rem); }
+    .breadcrumbs { padding: 18px 0; background-color: var(--eco-light-gray); border-bottom: 1px solid var(--eco-medium-gray); }
+    
+    .category-page-wrapper { padding: 80px 0; }
+    .category-page-content { display: grid; grid-template-columns: 280px 1fr; gap: 40px; }
+    
+    .filter-sidebar { background-color: var(--eco-white); padding: 35px; border-radius: var(--border-radius-main); box-shadow: var(--box-shadow-light); align-self: flex-start; position: sticky; top: 150px; }
+    .filter-sidebar h3 { font-family: var(--font-headings); font-size: 2em; margin: -35px -35px 30px -35px; padding: 20px 35px; background: var(--eco-primary-accent); color: var(--eco-white); }
+    
+    .filter-group { margin-bottom: 15px; }
+    .filter-group h4 { font-size: 1.2em; margin-bottom: 10px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .filter-group h4 i { transition: transform 0.3s ease; }
+    .filter-group.active h4 i { transform: rotate(180deg); }
+    .filter-options { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; }
+    .filter-group.active .filter-options { max-height: 500px; }
+    .filter-group label { display: flex; align-items: center; margin-bottom: 15px; cursor: pointer; }
+    .filter-group input[type="checkbox"] { margin-right: 12px; transform: scale(1.1); accent-color: var(--eco-primary-accent); width: 18px; height: 18px; }
+
+    .featured-product-section { position: relative; display: flex; align-items: center; justify-content: flex-end; min-height: 500px; background-size: cover; background-position: center; border-radius: var(--border-radius-main); padding: 40px 60px; color: var(--eco-white); overflow: hidden; margin-bottom: 30px; box-shadow: var(--box-shadow-strong); }
+    .featured-product-section::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(25, 25, 25, 0) 0%, rgba(25, 25, 25, 0.6) 45%, rgba(25, 25, 25, 0.8) 100%); z-index: 1; }
+    .featured-product-details { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: flex-start; max-width: 45%; text-align: left; }
+    .featured-badge { background: var(--eco-primary-accent); color: var(--eco-white); padding: 6px 12px; border-radius: var(--border-radius-small); font-size: 0.9em; font-weight: 500; display: inline-block; margin-bottom: 20px; }
+    .featured-product-details h2 { font-family: var(--font-headings); font-size: 2.8em; margin-bottom: 15px; color: var(--eco-white); line-height: 1.2; }
+    .featured-desc { color: var(--eco-light-gray); line-height: 1.7; margin-bottom: 25px; }
+    .featured-price { font-size: 2em; font-weight: 700; color: var(--eco-white); margin-bottom: 30px; }
+    .featured-price del { color: var(--eco-medium-gray); font-weight: 400; font-size: 0.7em; margin-right: 10px; }
+    .btn-featured { background-color: var(--eco-primary-accent); color: var(--eco-white); padding: 15px 30px; font-size: 1.1em; transition: var(--transition-main); }
+    .btn-featured:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
+
+    .listing-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding: 18px 25px; background: var(--eco-white); border-radius: var(--border-radius-main); box-shadow: var(--box-shadow-light); }
+    
+    .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+    .product-card { background-color: var(--eco-white); border-radius: var(--border-radius-main); box-shadow: var(--box-shadow-light); overflow: hidden; position: relative; transition: var(--transition-main); display: flex; flex-direction: column; }
+    
+    .product-card.reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .product-card.is-visible { opacity: 1; transform: translateY(0); }
+    
+    .product-card:hover { transform: translateY(-12px); box-shadow: var(--box-shadow-strong); }
+    .product-image-container img { width: 100%; height: 320px; object-fit: cover; }
+    
+    /* ✅ NEW: FOOTER STYLES */
+    .site-footer {
+        background-color: var(--eco-footer-bg);
+        color: var(--eco-light-gray);
+        padding: 80px 0 0;
+        margin-top: 80px;
+        font-size: 0.95em;
+    }
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 40px;
+        margin-bottom: 60px;
+    }
+    .footer-column h4 {
+        font-family: var(--font-headings);
+        font-size: 1.5em;
+        margin-bottom: 25px;
+        color: var(--eco-white);
+    }
+    .footer-column ul li { margin-bottom: 15px; }
+    .footer-column ul a { color: var(--eco-medium-gray); transition: var(--transition-main); }
+    .footer-column ul a:hover { color: var(--eco-primary-accent); padding-left: 5px; }
+    .newsletter-form input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid var(--eco-dark-gray);
+        background-color: #444;
+        color: var(--eco-white);
+        border-radius: var(--border-radius-small);
+        margin-bottom: 10px;
+    }
+    .newsletter-form button {
+        width: 100%;
+        background-color: var(--eco-primary-accent);
+        color: var(--eco-white);
+        border: none;
+    }
+    .footer-bottom {
+        border-top: 1px solid var(--eco-dark-gray);
+        padding: 25px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.9em;
+    }
+    .social-icons a {
+        color: var(--eco-medium-gray);
+        margin-left: 20px;
+        font-size: 1.3em;
+        transition: var(--transition-main);
+    }
+    .social-icons a:hover { color: var(--eco-primary-accent); transform: scale(1.1); }
+    
+    /* Animations */
+    @keyframes pulse { 0% { transform: scale(0.95); } 70% { transform: scale(1.1); } 100% { transform: scale(0.95); } }
+    @keyframes kenBurns { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+    @keyframes slideUpFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    
+    /* Other styles copied */
+    .breadcrumbs .container a { color: var(--eco-primary-accent); font-weight: 500; } .breadcrumbs .container span { color: var(--eco-text-secondary); } .listing-header-left { display: flex; align-items: center; gap: 20px; } .view-toggle button { background: none; border: 1px solid var(--eco-medium-gray); padding: 8px 10px; border-radius: 5px; cursor: pointer; } .view-toggle button.active { background-color: var(--eco-primary-accent); color: var(--eco-white); border-color: var(--eco-primary-accent); } .product-count strong { color: var(--eco-primary-accent); } .sort-options select { padding: 10px 15px; border-radius: var(--border-radius-small); border: 1px solid var(--eco-medium-gray); } .product-image-container { overflow: hidden; position: relative; cursor: pointer; } .product-card:hover .product-image-container img { transform: scale(1.05); } .product-hover-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; opacity: 0; transition: var(--transition-main); } .product-card:hover .product-hover-overlay { opacity: 1; } .product-info { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; } .product-info h3 { font-size: 1.15em; font-weight: 600; line-height: 1.4; margin-bottom: 10px; } .product-info .list-view-desc { display: none; margin-top: 15px; } .product-price { font-size: 1.25em; font-weight: 700; color: var(--eco-primary-accent); margin-top: auto; padding-top: 10px; } .product-price del { color: var(--eco-text-secondary); font-weight: 400; font-size: 0.8em; margin-right: 8px; } .product-grid.list-view-active { grid-template-columns: 1fr; } .product-grid.list-view-active .product-card { flex-direction: row; align-items: center; } .product-grid.list-view-active .product-image-container { width: 250px; height: 200px; flex-shrink: 0; } .product-grid.list-view-active .product-info .list-view-desc { display: block; } .no-products-found { display: none; text-align: center; padding: 60px 40px; }
+
+    /* ✅ MODIFIED: STYLES FOR NEW ACTION BUTTONS */
+    .product-actions { display: flex; gap: 15px; }
+    .action-btn {
+        background-color: var(--eco-white);
+        color: var(--eco-text-primary);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        transition: var(--transition-main);
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    .product-card:hover .action-btn {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    .product-card:hover .action-btn:nth-child(1) { transition-delay: 0.1s; }
+    .product-card:hover .action-btn:nth-child(2) { transition-delay: 0.2s; }
+    .product-card:hover .action-btn:nth-child(3) { transition-delay: 0.3s; }
+    .action-btn:hover {
+        background-color: var(--eco-primary-accent);
+        color: var(--eco-white);
+        transform: scale(1.1) !important;
+    }
+</style>
+</head>
+<body>
+    <div id="preloader"><img id="loadingIcon" src="/frontend/iron_logo.png" alt="Loading..."></div>
+<div class="top-bar">
+    <div class="container">
+        <a href="#" class="btn top-bar-button"><i class="fas fa-truck-fast"></i> Track-Order</a>
+        <span class="top-bar-promo-text">Sustainable Living, Stylishly Delivered. Up to 15% off outdoor essentials! <a href="#">Shop Now</a></span>
+        <a href="#" class="btn top-bar-button"><i class="fa-solid fa-phone"></i> Contact-Us</a>
+    </div>
+</div>
+<header>
+    <div class="container header-content">
+        <div class="logo"><a href="naaz.html"><img src="/frontend/iron_logo.png" alt="IRON STREET Logo" class="logo-img"></a></div>
+        <div class="search-bar"><input type="text" placeholder="Search for sustainable products..."><button><i class="fas fa-search"></i></button></div>
+        <div class="header-actions">
+            <a href="#" class="header-action-item"><i class="fas fa-user"></i><span>Profile</span></a>
+            <a href="#" class="header-action-item"><i class="fas fa-heart"></i><span>Want Vault (1)</span></a>
+            <!-- ✅ MODIFICATION: Cart link now points to cart.html and has an ID for dynamic updates -->
+            <a href="cart.html" class="header-action-item">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="header-cart-count">Cart (0)</span>
+            </a>
+        </div>
+    </div>
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="#">New Arrivals</a></li>
+                <li><a href="#">Living Room</a></li>
+                <li><a href="#">Bedroom</a></li>
+                <li><a href="dining.html" class="active">Dining</a></li>
+                <li><a href="#">Outdoor Living</a></li>
+                <li><a href="#">Decor & Lighting</a></li>
+                <li><a href="#">Office Furniture</a></li>
+                <li><a href="#">Collections</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section class="category-hero">
+        <div class="hero-background" style="background-image: url('https://images.unsplash.com/photo-1617806118233-18e1de247200?q=80&w=1974&auto=format&fit=crop');"></div>
+        <div class="category-hero-content"><h1>Gather in Style</h1><p>Beautifully crafted dining furniture for memories that last.</p></div>
+    </section>
+    <div class="breadcrumbs"><div class="container"><a href="naaz.html">Home</a> > <span>Dining</span></div></div>
+    <div class="category-page-wrapper">
+        <div class="container category-page-content">
+            <aside class="filter-sidebar">
+                <h3>Filter & Refine</h3>
+                <div class="filter-group active" data-filter-group="type">
+                    <h4>Product Type <i class="fas fa-chevron-down"></i></h4>
+                    <div class="filter-options"><label><input type="checkbox" value="set"> Dining Sets</label><label><input type="checkbox" value="table"> Dining Tables</label><label><input type="checkbox" value="chair"> Dining Chairs</label><label><input type="checkbox" value="sideboard"> Sideboards</label></div>
+                </div>
+                <div class="filter-group active" data-filter-group="seating">
+                    <h4>Seating Capacity <i class="fas fa-chevron-down"></i></h4>
+                    <div class="filter-options"><label><input type="checkbox" value="2"> 2 Seater</label><label><input type="checkbox" value="4"> 4 Seater</label><label><input type="checkbox" value="6"> 6 Seater</label><label><input type="checkbox" value="8"> 8 Seater</label></div>
+                </div>
+                <button id="clear-filters-btn" class="btn" style="width:100%; margin-top:10px; background-color: var(--eco-dark-gray); color: white;">Clear Filters</button>
+            </aside>
+            <div class="product-listing-area">
+                <div class="featured-product-section" id="featuredProductSection"></div>
+                
+                <div class="listing-header">
+                    <div class="listing-header-left"><div class="view-toggle"><button id="grid-view-btn" class="active"><i class="fas fa-th-large"></i></button><button id="list-view-btn"><i class="fas fa-list"></i></button></div><div class="product-count"></div></div>
+                    <div class="sort-options"><label for="sort">Sort by: </label><select name="sort" id="sort"><option value="popularity">Popularity</option><option value="newest">Newest</option><option value="price-asc">Price: Low to High</option><option value="price-desc">Price: High to Low</option></select></div>
+                </div>
+                <div class="product-grid"></div>
+                <div class="no-products-found"><h4>No Products Found</h4></div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- ✅ NEW: ENHANCED FOOTER -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h4>Shop Categories</h4>
+                <ul>
+                    <li><a href="#">Living Room</a></li>
+                    <li><a href="#">Dining</a></li>
+                    <li><a href="#">Bedroom</a></li>
+                    <li><a href="#">Outdoor Living</a></li>
+                    <li><a href="#">Decor & Lighting</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Shipping & Delivery</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>About Iron Street</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Join Our Newsletter</h4>
+                <p style="margin-bottom: 20px; color: var(--eco-medium-gray);">Get exclusive deals and inspiration delivered to your inbox.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2024 IRON STREET. All Rights Reserved.</span>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ✅ MODIFIED: PRODUCT CARD TEMPLATE -->
+<template id="product-card-template">
+    <div class="product-card">
+        <div class="product-image-container">
+            <img src="" alt="">
+            <div class="product-hover-overlay">
+                <!-- ✅ MODIFIED: Action buttons for Wishlist, View, and Cart -->
+                <div class="product-actions">
+                    <a href="#" class="action-btn" title="Add to Wishlist"><i class="fas fa-heart"></i></a>
+                    <a href="product-detail.html" class="action-btn" title="View Details"><i class="fas fa-search"></i></a>
+                    <a href="#" class="action-btn" title="Add to Cart"><i class="fas fa-shopping-cart"></i></a>
+                </div>
+            </div>
+            <span class="product-badge"></span>
+        </div>
+        <div class="product-info">
+            <h3></h3>
+            <p class="list-view-desc"></p>
+            <p class="product-price"></p>
+        </div>
+    </div>
+</template>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // ✅ NEW: Function to update cart count in the header
+    function updateHeaderCartCount() {
+        const cart = JSON.parse(localStorage.getItem('ecoCart')) || [];
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        const cartCountEl = document.getElementById('header-cart-count');
+        if (cartCountEl) {
+            // Update the text to show the total number of items
+            const textNode = Array.from(cartCountEl.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
+            if (textNode) {
+                textNode.textContent = `Cart (${totalItems})`;
+            } else {
+                 cartCountEl.textContent = `Cart (${totalItems})`;
+            }
+        }
+    }
+
+    const productsData = [
+        { id: 1, title: 'Arabia 6-Seater Dining Set', price: 45999, seating: '6', type: 'set', popularity: 1, newness: 5, img: '/frontend/images/outdoor 1.jpg', desc: 'A majestic dining set featuring a solid wood table and six comfortably upholstered chairs.', badge: 'Popular' },
+        { id: 2, title: 'Janet 4-Seater Dining Table', price: 18500, seating: '4', type: 'table', popularity: 4, newness: 4, img: '/frontend/images/s2.jpeg', desc: 'A sleek and modern dining table with a minimalist design, ideal for compact urban spaces.', badge: null },
+        { id: 3, title: 'Kagan Upholstered Dining Chair', price: 5999, oldPrice: 7500, seating: '1', type: 'chair', popularity: 3, newness: 3, img: './frontend/images/s3.JPG', desc: 'Experience ultimate comfort with the Kagan dining chair. Its plush upholstery makes long dinners a pleasure.', badge: 'Sale' },
+        { id: 4, title: 'Acropolis Solid Wood Sideboard', price: 28999, seating: '0', type: 'sideboard', popularity: 5, newness: 2, img: '/frontend/images/s4.JPG', desc: 'Organize your dining essentials in style with this timeless solid wood construction.', badge: null },
+        { id: 5, title: 'Carven 2-Seater Dining Set', price: 15499, seating: '2', type: 'set', popularity: 6, newness: 6, img: '/frontend/images/s5.webp', desc: 'Perfect for cozy apartments, the Carven set combines style and function in a compact package.', badge: 'New' },
+        { id: 6, title: 'Zephyr Round Dining Table', price: 16999, seating: '4', type: 'table', popularity: 2, newness: 1, img: '/frontend/images/s6.webp', desc: 'Encourage conversation with the Zephyr round table. Its pedestal base allows for more legroom.', badge: null },
+        { id: 7, title: 'Sheesham Wood Bar Cabinet', price: 22500, oldPrice: 28000, seating: '0', type: 'sideboard', popularity: 8, newness: 8, img: '/frontend/images/s7.jpg', desc: 'A stylish and compact bar cabinet to store your collection with elegance.', badge: 'Sale' },
+        { id: 8, title: 'Mecor Metal Dining Chairs (Set of 4)', price: 9999, seating: '1', type: 'chair', popularity: 7, newness: 7, img: '/frontend/images/s8.jpeg', desc: 'Industrial chic meets modern comfort. These metal chairs are durable and surprisingly comfortable.', badge: null },
+        { id: 9, title: 'Atris 4-Seater Glass Top Set', price: 24999, seating: '4', type: 'set', popularity: 9, newness: 9, img: '/frontend/images/s9.jpg', desc: 'A modern dining set with a tempered glass top and sleek metal legs for a contemporary look.', badge: 'Popular' },
+        { id: 10, title: 'Solid Wood Extendable Table', price: 35999, oldPrice: 42000, seating: '8', type: 'table', popularity: 10, newness: 3, img: '/frontend/images/s10.jpeg', desc: 'Perfect for hosts, this table extends from 6 to 8 seats to accommodate more guests for special occasions.', badge: 'Sale' },
+        { id: 11, title: 'Velvet Upholstered Dining Bench', price: 8500, seating: '2', type: 'chair', popularity: 11, newness: 11, img: '/frontend/images/s11.JPG', desc: 'Add a touch of luxury and versatile seating to your dining area with this plush velvet bench.', badge: null },
+        { id: 12, title: 'Modern White Sideboard Buffet', price: 19999, seating: '0', type: 'sideboard', popularity: 12, newness: 12, img: '/frontend/images/s12.jpeg', desc: 'Clean lines and a minimalist design make this sideboard a perfect storage solution for modern homes.', badge: 'New' },
+        { id: 13, title: 'Farmhouse 8-Seater Dining Set', price: 65000, seating: '8', type: 'set', popularity: 13, newness: 14, img: '/frontend/images/s13.jpg', desc: 'A grand farmhouse-style set perfect for large family gatherings. Includes a large table and eight matching chairs.', badge: null },
+        { id: 14, title: 'Industrial Metal Bar Stool', price: 4500, seating: '1', type: 'chair', popularity: 15, newness: 10, img: '/frontend/images/s14.jpg', desc: 'A sturdy and stylish bar stool with a reclaimed wood seat, perfect for your kitchen island or bar table.', badge: null },
+        { id: 15, title: 'Nordic 4-Seater Oak Set', price: 28999, oldPrice: 32000, seating: '4', type: 'set', popularity: 14, newness: 13, img: '/frontend/images/s15.jpg', desc: 'Embrace Scandinavian design with this beautiful oak dining set. Simple, elegant, and built to last.', badge: 'Sale' },
+        { id: 16, title: 'Marble Top Dining Table', price: 39999, seating: '6', type: 'table', popularity: 16, newness: 16, img: '/frontend/images/s16.jpg', desc: 'Add a touch of opulence to your dining room with this genuine marble top table, supported by a sturdy wooden base.', badge: 'New' },
+        { id: 17, title: 'Lexi Dining Chairs (Set of 2)', price: 8999, seating: '1', type: 'chair', popularity: 18, newness: 18, img: '/frontend/images/s17.jpg', desc: 'Curved for comfort and style, the Lexi chairs feature a unique silhouette and soft fabric.', badge: 'Popular' },
+        { id: 18, title: 'Compact Drop-Leaf Table', price: 12999, seating: '2', type: 'table', popularity: 17, newness: 17, img: '/frontend/images/s18.jpg', desc: 'The ultimate space-saver. This drop-leaf table can be folded down when not in use, ideal for small kitchens.', badge: null },
+        { id: 19, title: 'Tall Glass-Door Cabinet', price: 25500, seating: '0', type: 'sideboard', popularity: 19, newness: 19, img: '/frontend/images/s19.jpg', desc: 'Showcase your finest dinnerware in this elegant cabinet with glass doors and internal lighting.', badge: null },
+        { id: 20, title: 'Boho Rattan Dining Chair', price: 6500, seating: '1', type: 'chair', popularity: 20, newness: 20, img: '/frontend/images/s20.webp', desc: 'Bring a natural, bohemian vibe to your dining space with this beautifully hand-woven rattan chair.', badge: 'New' },
+    ];
+
+    const selectors = {
+        filterControls: document.querySelectorAll('.filter-group input[type="checkbox"]'),
+        sortSelect: document.getElementById('sort'),
+        productGrid: document.querySelector('.product-grid'),
+        productCount: document.querySelector('.product-count'),
+        clearFiltersBtn: document.getElementById('clear-filters-btn'),
+        gridViewBtn: document.getElementById('grid-view-btn'),
+        listViewBtn: document.getElementById('list-view-btn'),
+        noProductsMessage: document.querySelector('.no-products-found'),
+        featuredProductSection: document.getElementById('featuredProductSection'),
+        filterGroupHeaders: document.querySelectorAll('.filter-group h4'),
+    };
+    let allProductElements = [];
+    
+    function displayBestSeller() {
+        const bestSeller = productsData.find(p => p.popularity === 1);
+        if (!bestSeller || !selectors.featuredProductSection) return;
+        selectors.featuredProductSection.style.backgroundImage = `url('${bestSeller.img}')`;
+        const priceHtml = `₹${bestSeller.price.toLocaleString('en-IN')}`;
+        const featuredHtml = `
+            <div class="featured-product-details">
+                <span class="featured-badge">Our Best Seller</span>
+                <h2>${bestSeller.title}</h2>
+                <p class="featured-desc">${bestSeller.desc}</p>
+                <p class="featured-price">${priceHtml}</p>
+                <a href="product-detail.html?id=${bestSeller.id}" class="btn btn-featured">View Product Details</a>
+            </div>
+            
+        `;
+        selectors.featuredProductSection.innerHTML = featuredHtml;
+    }
+
+    function buildProductCards() {
+        const template = document.getElementById('product-card-template');
+        allProductElements = productsData.map(p => {
+            const card = template.content.cloneNode(true).querySelector('.product-card');
+            card.classList.add('reveal-on-scroll');
+            Object.keys(p).forEach(key => card.dataset[key] = p[key]);
+            
+            card.querySelector('a[title="View Details"]').href = `product-detail.html?id=${p.id}`;
+
+            card.querySelector('img').src = p.img; card.querySelector('h3').textContent = p.title; card.querySelector('.list-view-desc').textContent = p.desc;
+            const priceEl = card.querySelector('.product-price');
+            priceEl.innerHTML = p.oldPrice ? `<del>₹${p.oldPrice.toLocaleString('en-IN')}</del> ₹${p.price.toLocaleString('en-IN')}` : `₹${p.price.toLocaleString('en-IN')}`;
+            const badgeEl = card.querySelector('.product-badge');
+            if (p.badge) { badgeEl.textContent = p.badge; badgeEl.className = `product-badge ${p.badge.toLowerCase()}`; } else { badgeEl.style.display = 'none'; }
+            return card;
+        });
+    }
+
+    const scrollObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { rootMargin: "0px 0px -100px 0px" });
+
+    function observeCards() {
+        const cards = document.querySelectorAll('.product-card.reveal-on-scroll');
+        cards.forEach(card => scrollObserver.observe(card));
+    }
+
+    function renderProducts() {
+        const activeFilters = Array.from(selectors.filterControls).filter(cb => cb.checked).reduce((acc, cb) => {
+            const group = cb.closest('.filter-group').dataset.filterGroup;
+            if (!acc[group]) acc[group] = [];
+            acc[group].push(cb.value);
+            return acc;
+        }, {});
+        let filtered = allProductElements.filter(product => {
+            return Object.entries(activeFilters).every(([group, values]) => {
+                if(values.length === 0) return true;
+                return values.includes(product.dataset[group]);
+            });
+        });
+        const sortBy = selectors.sortSelect.value;
+        filtered.sort((a, b) => {
+            const priceA = parseFloat(a.dataset.price), priceB = parseFloat(b.dataset.price);
+            const popA = parseInt(a.dataset.popularity), popB = parseInt(b.dataset.popularity);
+            const newA = parseInt(a.dataset.newness), newB = parseInt(b.dataset.newness);
+            switch (sortBy) { case 'price-asc': return priceA - priceB; case 'price-desc': return priceB - priceA; case 'newest': return newB - newA; default: return popA - popB; }
+        });
+        selectors.productGrid.innerHTML = '';
+        selectors.noProductsMessage.style.display = filtered.length === 0 ? 'block' : 'none';
+        selectors.productGrid.style.display = filtered.length === 0 ? 'none' : (selectors.productGrid.classList.contains('list-view-active') ? 'grid' : 'grid');
+        
+        filtered.forEach(product => selectors.productGrid.appendChild(product));
+        selectors.productCount.innerHTML = `Showing <strong>${filtered.length}</strong> of <strong>${productsData.length}</strong> products`;
+        
+        observeCards();
+    }
+    
+    // --- INITIALIZATION ---
+    window.addEventListener('load', () => { document.getElementById('preloader').style.display = 'none'; });
+    
+    displayBestSeller(); 
+    buildProductCards(); 
+    renderProducts();
+    updateHeaderCartCount(); // Initial cart count update
+    
+    // --- EVENT LISTENERS ---
+    selectors.filterControls.forEach(cb => cb.addEventListener('change', renderProducts));
+    selectors.sortSelect.addEventListener('change', renderProducts);
+    selectors.clearFiltersBtn.addEventListener('click', () => { selectors.filterControls.forEach(cb => cb.checked = false); renderProducts(); });
+    selectors.gridViewBtn.addEventListener('click', () => { selectors.productGrid.classList.remove('list-view-active'); selectors.gridViewBtn.classList.add('active'); selectors.listViewBtn.classList.remove('active'); });
+    selectors.listViewBtn.addEventListener('click', () => { selectors.productGrid.classList.add('list-view-active'); selectors.listViewBtn.classList.add('active'); selectors.gridViewBtn.classList.remove('active'); });
+        
+    selectors.filterGroupHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+            header.parentElement.classList.toggle('active');
+        });
+    });
+    
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1245 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | IRON STREET</title>
+    
+    <!-- Google Fonts for a sophisticated and modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- 
+    =========================================================================
+    |                                  CSS                                  |
+    =========================================================================
+    | All styles are contained within this <style> tag for single-file use. |
+    | For production, it's best practice to move this to a separate .css file. |
+    -------------------------------------------------------------------------
+    -->
+    <style>
+        /* ------------------------- */
+        /* --- 1. Global & Reset --- */
+        /* ------------------------- */
+        :root {
+            /* Color Palette - Earthy, Warm, and Premium */
+            --color-primary: #4a5c52; /* Deep, desaturated green */
+            --color-primary-dark: #3a4a42;
+            --color-secondary: #a38b76; /* Warm tan */
+            --color-accent: #c7a47e; /* Lighter gold/tan */
+            --color-light: #f5f3f0; /* Creamy light gray */
+            --color-dark: #333333;
+            --color-text: #414141;
+            --color-text-muted: #6e6e6e;
+            --color-background: #fdfcfb; /* Slightly off-white */
+            --color-border: #e0dcd7;
+            --color-success: #3e8d63;
+            --color-danger: #a44f4f;
+
+            /* Typography */
+            --font-family-serif: 'Playfair Display', serif;
+            --font-family-sans-serif: 'Poppins', sans-serif;
+            --font-size-base: 1rem; /* 16px */
+            --line-height-base: 1.7;
+
+            /* Spacing */
+            --spacing-xs: 0.25rem;  /* 4px */
+            --spacing-sm: 0.5rem;   /* 8px */
+            --spacing-md: 1rem;     /* 16px */
+            --spacing-lg: 1.5rem;   /* 24px */
+            --spacing-xl: 2.5rem;   /* 40px */
+            --spacing-xxl: 4rem;    /* 64px */
+
+            /* Borders */
+            --border-radius-sm: 0.2rem;
+            --border-radius: 0.3rem;
+            --border-radius-lg: 0.5rem;
+            
+            /* Transitions */
+            --transition-base: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+            /* Box Shadow */
+            --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            --box-shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family-sans-serif);
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-base);
+            color: var(--color-text);
+            background-color: var(--color-background);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+        }
+        
+        /* ---------------------------- */
+        /* --- 2. Main Product Area --- */
+        /* ---------------------------- */
+        .product-page-container {
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .product-main-card {
+            background-color: #fff;
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: var(--spacing-xxl);
+        }
+
+        /* --------------------------- */
+        /* --- 3. Image Gallery --- */
+        /* --------------------------- */
+        .product-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .main-image-container {
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .main-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        
+        .thumbnail-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .thumbnail-item {
+            border: 2px solid transparent;
+            border-radius: var(--border-radius-sm);
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition-base);
+            opacity: 0.8;
+        }
+        
+        .thumbnail-item:hover {
+            opacity: 1;
+            border-color: var(--color-secondary);
+        }
+        
+        .thumbnail-item.active {
+            border-color: var(--color-primary);
+            opacity: 1;
+            box-shadow: 0 0 8px rgba(74, 92, 82, 0.4);
+        }
+
+        .thumbnail-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ---------------------------- */
+        /* --- 4. Product Details --- */
+        /* ---------------------------- */
+        .product-details {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-brand {
+            font-size: 0.9em;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .product-title {
+            font-family: var(--font-family-serif);
+            font-size: 2.75rem;
+            font-weight: 700;
+            color: var(--color-dark);
+            line-height: 1.2;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .stars {
+            color: var(--color-accent);
+        }
+
+        .review-count {
+            font-size: 0.9em;
+            color: var(--color-secondary);
+            text-decoration: none;
+        }
+        .review-count:hover {
+            text-decoration: underline;
+        }
+        
+        .product-price {
+            display: flex;
+            align-items: baseline;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .current-price {
+            font-family: var(--font-family-serif);
+            font-size: 2.5rem;
+            color: var(--color-primary);
+        }
+
+        .original-price {
+            font-size: 1.2rem;
+            color: var(--color-text-muted);
+            text-decoration: line-through;
+        }
+        
+        .product-description {
+            margin-bottom: var(--spacing-xl);
+            font-size: 1.05rem;
+        }
+
+        .options-group {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .options-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .finish-selector, .configuration-selector {
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+        
+        /* Wood Finish Swatches */
+        .finish-swatch {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--border-radius-sm);
+            border: 2px solid var(--color-border);
+            cursor: pointer;
+            transition: var(--transition-base);
+            position: relative;
+        }
+        .finish-swatch:hover {
+            transform: scale(1.1);
+        }
+        .finish-swatch.selected {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 2px var(--color-background), 0 0 0 4px var(--color-primary);
+        }
+
+        /* Configuration Buttons */
+        .config-btn {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            background-color: var(--color-background);
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition-base);
+        }
+        .config-btn:hover {
+            background-color: var(--color-light);
+            border-color: var(--color-secondary);
+        }
+        .config-btn.selected {
+            background-color: var(--color-primary);
+            color: #fff;
+            border-color: var(--color-primary);
+        }
+
+        /* -------------------------- */
+        /* --- 5. Action Controls --- */
+        /* -------------------------- */
+        .action-controls {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: auto; /* Pushes controls to the bottom */
+            padding-top: var(--spacing-xl);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+        }
+        
+        .quantity-btn {
+            width: 44px;
+            height: 100%;
+            border: none;
+            background-color: transparent;
+            font-size: 1.5rem;
+            font-weight: 300;
+            cursor: pointer;
+            color: var(--color-secondary);
+            transition: background-color 0.2s;
+        }
+        .quantity-btn:hover {
+            background-color: var(--color-light);
+        }
+
+        #quantity-input {
+            width: 50px;
+            height: 44px;
+            text-align: center;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            background: transparent;
+            -moz-appearance: textfield;
+            color: var(--color-dark);
+        }
+        #quantity-input::-webkit-outer-spin-button,
+        #quantity-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .add-to-cart-btn {
+            flex-grow: 1;
+            padding: 0 var(--spacing-lg);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            background-color: var(--color-primary);
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: var(--color-primary-dark);
+            box-shadow: 0 4px 15px rgba(74, 92, 82, 0.3);
+        }
+        .add-to-cart-btn.added {
+            background-color: var(--color-success);
+        }
+        .add-to-cart-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* --------------------------------- */
+        /* --- 6. Why Choose Us Section --- */
+        /* --------------------------------- */
+        .why-choose-us-section {
+            margin-top: var(--spacing-xxl);
+            background-color: #fff;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--box-shadow);
+            padding: var(--spacing-xl);
+        }
+        
+        .why-choose-us-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-xl);
+        }
+
+        .why-choose-us-item {
+            text-align: center;
+        }
+        
+        .why-choose-us-icon {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .why-choose-us-item h3 {
+            font-family: var(--font-family-serif);
+            font-size: 1.25rem;
+            color: var(--color-dark);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .why-choose-us-item p {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+        }
+        
+        /* Interactive description part */
+        #why-choose-us-description-area {
+            margin-top: var(--spacing-xl);
+            padding: var(--spacing-lg);
+            background-color: var(--color-light);
+            border-radius: var(--border-radius);
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-dark);
+            font-style: italic;
+            transition: all 0.3s ease;
+        }
+
+
+        /* -------------------------------- */
+        /* --- 7. Additional Info Accordion --- */
+        /* -------------------------------- */
+        .additional-info-section {
+            margin-top: var(--spacing-xxl);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid var(--color-border);
+        }
+        .accordion-item:first-child {
+            border-top: 1px solid var(--color-border);
+        }
+        
+        .accordion-header {
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            padding: var(--spacing-lg) var(--spacing-sm);
+            font-family: var(--font-family-serif);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.2s;
+        }
+        
+        .accordion-header:hover {
+            color: var(--color-primary);
+        }
+
+        .accordion-icon {
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease, margin 0.4s ease;
+            color: var(--color-text-muted);
+            padding: 0 var(--spacing-sm);
+        }
+        
+        .accordion-item.active .accordion-header {
+            color: var(--color-primary);
+        }
+        
+        .accordion-item.active .accordion-icon {
+            transform: rotate(45deg);
+        }
+        
+        .accordion-item.active .accordion-content {
+            padding-bottom: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .spec-table td {
+            padding: var(--spacing-sm);
+            border-bottom: 1px solid var(--color-border);
+        }
+        .spec-table tr:last-child td {
+            border-bottom: none;
+        }
+        .spec-table td:first-child {
+            font-weight: 600;
+            color: var(--color-dark);
+            width: 30%;
+        }
+        
+        /* --------------------------- */
+        /* --- 8. Meet The Artisan --- */
+        /* --------------------------- */
+        .artisan-section {
+            margin-top: var(--spacing-xxl);
+            background-color: var(--color-light);
+            padding: var(--spacing-xxl) var(--spacing-xl);
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+            border-radius: var(--border-radius-lg);
+        }
+        
+        .artisan-photo {
+            width: 100%;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            box-shadow: var(--box-shadow-lg);
+        }
+        
+        .artisan-bio h2 {
+            font-family: var(--font-family-serif);
+            font-size: 2rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-dark);
+        }
+        
+        .artisan-bio p {
+            margin-bottom: var(--spacing-lg);
+            color: var(--color-text-muted);
+        }
+        
+        .artisan-signature {
+            font-family: 'Playfair Display', cursive;
+            font-style: italic;
+            font-size: 1.5rem;
+            color: var(--color-primary);
+        }
+
+
+        /* -------------------------- */
+        /* --- 9. Reviews Section --- */
+        /* -------------------------- */
+        .reviews-section {
+            margin-top: var(--spacing-xxl);
+            padding: var(--spacing-xl) 0;
+        }
+        
+        .reviews-section-title {
+            font-family: var(--font-family-serif);
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-xl);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px solid var(--color-border);
+            text-align: center;
+        }
+        
+        /* Styles for reviews are similar to the original, just with new theme colors */
+        .review-card {
+            border-bottom: 1px solid var(--color-border);
+            padding: var(--spacing-lg) 0;
+        }
+        .review-card:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .reviewer-info { display: flex; align-items: center; gap: var(--spacing-md); }
+        .reviewer-avatar { width: 48px; height: 48px; border-radius: 50%; }
+        .reviewer-name { font-weight: 600; color: var(--color-dark); }
+        .review-date { font-size: 0.9em; color: var(--color-text-muted); }
+        .review-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--spacing-sm); }
+        .review-body { color: var(--color-text-muted); }
+
+        
+        /* --------------------------------- */
+        /* --- 10. Related Products Section --- */
+        /* --------------------------------- */
+        .related-products-section {
+            margin-top: var(--spacing-xxl);
+        }
+        
+        .related-products-title {
+            font-family: var(--font-family-serif);
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-xl);
+            text-align: center;
+        }
+        
+        .related-products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--spacing-xl);
+        }
+        
+        .related-product-card {
+            background-color: #fff;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            transition: var(--transition-base);
+            text-decoration: none;
+            color: var(--color-text);
+        }
+        
+        .related-product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--box-shadow-lg);
+        }
+        
+        .related-product-image { 
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        
+        .related-product-info {
+            padding: var(--spacing-md);
+        }
+        
+        .related-product-name {
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-dark);
+            font-size: 1.1rem;
+        }
+        
+        .related-product-price {
+            font-weight: 500;
+            color: var(--color-primary);
+        }
+
+        /* -------------------------- */
+        /* --- 11. Toast Notification --- */
+        /* -------------------------- */
+        .toast-notification {
+            position: fixed;
+            bottom: var(--spacing-xl);
+            right: var(--spacing-xl);
+            background-color: var(--color-dark);
+            color: var(--color-light);
+            padding: var(--spacing-md) var(--spacing-lg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            transform: translateY(200%);
+            opacity: 0;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            z-index: 1000;
+        }
+
+        .toast-notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast-icon {
+            color: var(--color-success);
+        }
+        .toast-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* ---------------------------- */
+        /* --- 12. Responsive Design --- */
+        /* ---------------------------- */
+        @media (max-width: 1024px) {
+            .product-main-card {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-xl);
+            }
+            .artisan-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .artisan-photo {
+                max-width: 250px;
+                margin: 0 auto var(--spacing-xl);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 var(--spacing-md);
+            }
+
+            .product-page-container { padding: var(--spacing-xl) 0; }
+            .product-main-card,
+            .why-choose-us-section { padding: var(--spacing-lg); }
+
+            .product-title { font-size: 2.2rem; }
+            .current-price { font-size: 2rem; }
+            
+            .action-controls {
+                flex-direction: column;
+            }
+            .add-to-cart-btn { width: 100%; height: 50px;}
+
+            .why-choose-us-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .review-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--spacing-sm);
+            }
+            .toast-notification {
+                width: calc(100% - 2 * var(--spacing-lg));
+                left: var(--spacing-lg);
+                right: var(--spacing-lg);
+                bottom: var(--spacing-lg);
+            }
+            .related-products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="product-page-container">
+        <div class="container">
+            <!-- ======================= -->
+            <!-- == Main Product Section == -->
+            <!-- ======================= -->
+            <section class="product-main-card">
+                <!-- Product Image Gallery -->
+                <div class="product-gallery">
+                    <div class="main-image-container">
+                        <img src="/frontend/images/Casamania Raphia Rattan Chair.jpeg" alt="Main image of the product" class="main-image" id="main-product-image">
+                    </div>
+                    <div class="thumbnail-list" id="thumbnail-list">
+                        <div class="thumbnail-item active">
+                            <img src="/frontend/images/chair1.jpg" alt="Product thumbnail" class="thumbnail-image">
+                        </div>
+                        <div class="thumbnail-item">
+                            <img src="/frontend/images/chair02.JPG" alt="Lifestyle detail shot" class="thumbnail-image">
+                        </div>
+                        <div class="thumbnail-item">
+                            <img src="/frontend/images/Bonavista Collection.jpg" alt="Product in a room setting" class="thumbnail-image">
+                        </div>
+                        <div class="thumbnail-item">
+                            <img src="/frontend/images/chair12.jpeg" alt="Close-up of the product material" class="thumbnail-image">
+                        </div>
+                        <div class="thumbnail-item">
+                            <img src="/frontend/images/chair16.jpg" alt="Another detail shot" class="thumbnail-image">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Details & Actions -->
+                <div class="product-details">
+                    <span class="product-brand">IRON STREET DINING</span>
+                    <h1 class="product-title">Loading Product...</h1>
+                    
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <a href="#reviews-section" class="review-count">(Based on Customer Reviews)</a>
+                    </div>
+                    
+                    <div class="product-price">
+                        <span class="current-price"></span>
+                        <span class="original-price"></span>
+                    </div>
+
+                    <p class="product-description"></p>
+
+                    <div class="options-group" style="display: none;">
+                        <label for="finish-selector" class="options-label">Finish: <span id="selected-finish-name">Natural Oak</span></label>
+                        <div class="finish-selector" id="finish-selector">
+                            <div class="finish-swatch selected" style="background-color: #d3b995;" data-finish-name="Natural Oak" title="Natural Oak"></div>
+                            <div class="finish-swatch" style="background-color: #8b5e34;" data-finish-name="Rich Walnut" title="Rich Walnut"></div>
+                            <div class="finish-swatch" style="background-color: #3d405b;" data-finish-name="Ebony Stain" title="Ebony Stain"></div>
+                        </div>
+                    </div>
+
+                    <div class="options-group" style="display: none;">
+                        <label for="configuration-selector" class="options-label">Configuration: <span id="selected-config-name">Standard</span></label>
+                        <div class="configuration-selector" id="configuration-selector">
+                            <button class="config-btn selected" data-config-name="Standard">Standard</button>
+                            <button class="config-btn" data-config-name="With Left Drawers">With Left Drawers</button>
+                            <button class="config-btn" data-config-name="With Right Drawers">With Right Drawers</button>
+                        </div>
+                    </div>
+
+                    <div class="action-controls">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" id="quantity-minus" aria-label="Decrease quantity">-</button>
+                            <input type="number" id="quantity-input" value="1" min="1" aria-label="Quantity">
+                            <button class="quantity-btn" id="quantity-plus" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" id="add-to-cart-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                            <span>Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- ========================= -->
+            <!-- == Why Choose Us Section == -->
+            <!-- ========================= -->
+            <section class="why-choose-us-section">
+                <div class="why-choose-us-grid" id="why-choose-us-grid">
+                    <div class="why-choose-us-item" data-description="Every piece is crafted from high-quality, durable materials, ensuring it withstands the test of time and family gatherings.">
+                        <div class="why-choose-us-icon">🏆</div>
+                        <h3>Premium Quality</h3>
+                        <p>Built to last generations.</p>
+                    </div>
+                    <div class="why-choose-us-item" data-description="Our furniture features timeless designs that blend seamlessly with both modern and traditional interiors.">
+                        <div class="why-choose-us-icon">🎨</div>
+                        <h3>Elegant Design</h3>
+                        <p>Style that never fades.</p>
+                    </div>
+                    <div class="why-choose-us-item" data-description="We stand by our craftsmanship. Enjoy peace of mind with our comprehensive warranty on all dining furniture.">
+                        <div class="why-choose-us-icon">🛡️</div>
+                        <h3>Solid Warranty</h3>
+                        <p>A commitment to you.</p>
+                    </div>
+                </div>
+                <div id="why-choose-us-description-area">
+                    Hover over a feature to learn more.
+                </div>
+            </section>
+
+            <!-- ======================== -->
+            <!-- == Additional Info Tabs == -->
+            <!-- ======================== -->
+            <section class="additional-info-section">
+                <div class="accordion" id="product-accordion">
+                    <div class="accordion-item active">
+                        <button class="accordion-header">
+                            Design & Details
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Our dining collection is a testament to functional minimalism and robust construction. Each piece is designed to provide ample room and comfort, creating an inviting atmosphere for meals and conversations. We use time-honored joinery techniques for unwavering stability.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            Specifications
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                           <table class="spec-table">
+                               <tbody>
+                                   <tr>
+                                       <td>Dimensions</td>
+                                       <td>Varies by product selection.</td>
+                                   </tr>
+                                   <tr>
+                                       <td>Material</td>
+                                       <td>Solid Wood, Metal, and Upholstery options available.</td>
+                                   </tr>
+                                    <tr>
+                                       <td>Finish</td>
+                                       <td>Low-VOC, non-toxic satin and gloss finishes.</td>
+                                   </tr>
+                                   <tr>
+                                       <td>Origin</td>
+                                       <td>Crafted in our workshops across Southeast Asia.</td>
+                                   </tr>
+                               </tbody>
+                           </table>
+                        </div>
+                    </div>
+                     <div class="accordion-item">
+                        <button class="accordion-header">
+                            Care & Maintenance
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>To maintain the beauty of your furniture, simply wipe with a soft, dry cloth. For minor spills, use a damp cloth followed immediately by a dry one. Avoid the use of harsh chemical cleaners. Use coasters and placemats to protect the surface from heat and moisture.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            Shipping & Assembly
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p><strong>Standard Delivery:</strong> Your order will be delivered to your doorstep. Please allow 1-2 weeks for delivery. <br>Some items may require simple assembly, such as attaching table legs. All necessary hardware and instructions are included.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================= -->
+            <!-- == Meet the Artisan Section == -->
+            <!-- ========================= -->
+            <section class="artisan-section">
+                <img src="/frontend/images/Casamania Raphia Rattan Chair.jpeg" alt="Photo of the artisan, Elias Vance" class="artisan-photo">
+                <div class="artisan-bio">
+                    <h2>The Iron Street Philosophy</h2>
+                    <p>"Furniture isn't just an object; it's the backdrop to your life's story. We are a collective of designers and craftspeople dedicated to creating pieces that are not just used, but lived with and loved. Our work is a blend of patience, passion, and the hope that our creations become the foundation for your own great memories."</p>
+                    <div class="artisan-signature">- The Iron Street Team</div>
+                </div>
+            </section>
+            
+            <!-- =================== -->
+            <!-- == Reviews Section == -->
+            <!-- =================== -->
+            <section class="reviews-section" id="reviews-section">
+                <h2 class="reviews-section-title">From Our Customers</h2>
+                <div class="review-list">
+                    <article class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <img src="https://i.pravatar.cc/48?u=clara" alt="Reviewer avatar" class="reviewer-avatar">
+                                <div>
+                                    <div class="reviewer-name">Priya S.</div>
+                                    <div class="review-date">1 week ago</div>
+                                </div>
+                            </div>
+                            <div class="review-meta">
+                                <div class="stars">★★★★★</div>
+                            </div>
+                        </div>
+                        <div class="review-body">
+                           <p>Absolutely in love with our new dining set. The quality is immediately apparent and it has completely transformed our dining room into a place we actually *want* to host dinners.</p>
+                        </div>
+                    </article>
+                    <article class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <img src="https://i.pravatar.cc/48?u=david" alt="Reviewer avatar" class="reviewer-avatar">
+                                <div>
+                                    <div class="reviewer-name">Rohan M.</div>
+                                    <div class="review-date">3 weeks ago</div>
+                                </div>
+                            </div>
+                            <div class="review-meta">
+                                <div class="stars">★★★★☆</div>
+                            </div>
+                        </div>
+                        <div class="review-body">
+                           <p>Great value for the price. The table is incredibly stable—no wobble whatsoever. Assembly was straightforward. Took one star off because delivery was delayed by a day, but the product itself is fantastic.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+            
+            <!-- ========================= -->
+            <!-- == Related Products Section == -->
+            <!-- ========================= -->
+            <section class="related-products-section">
+                <h2 class="related-products-title">Complete Your Dining Space</h2>
+                <div class="related-products-grid">
+                    <a href="#" class="related-product-card">
+                        <img src="/frontend/images/dup.png" alt="Matching Sideboard" class="related-product-image">
+                        <div class="related-product-info">
+                            <h3 class="related-product-name">Acropolis Sideboard</h3>
+                            <p class="related-product-price">₹28999.00</p>
+                        </div>
+                    </a>
+                    <a href="#" class="related-product-card">
+                        <img src="/frontend/images/duple.png" alt="Matching Dining Chair" class="related-product-image">
+                        <div class="related-product-info">
+                            <h3 class="related-product-name">Kagan Dining Chair</h3>
+                            <p class="related-product-price">₹5999.00</p>
+                        </div>
+                    </a>
+                    <a href="#" class="related-product-card">
+                        <img src="/frontend/images/dupl.png" alt="Pendant Light" class="related-product-image">
+                        <div class="related-product-info">
+                            <h3 class="related-product-name">Industrial Pendant Lamp</h3>
+                            <p class="related-product-price">₹7200.00</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Toast Notification Element -->
+    <div id="toast-notification" class="toast-notification">
+        <div class="toast-icon">
+             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <span id="toast-message"></span>
+    </div>
+
+    <!-- 
+    ===========================================================================
+    |                               JavaScript                                |
+    ===========================================================================
+    -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const productsData = [
+                { id: 1, title: 'Arabia 6-Seater Dining Set', price: 45999, seating: '6', type: 'set', popularity: 1, newness: 5, img: '/frontend/images/outdoor 1.jpg', desc: 'A majestic dining set featuring a solid wood table and six comfortably upholstered chairs.', badge: 'Popular' },
+                { id: 2, title: 'Janet 4-Seater Dining Table', price: 18500, seating: '4', type: 'table', popularity: 4, newness: 4, img: '/frontend/images/s2.jpeg', desc: 'A sleek and modern dining table with a minimalist design, ideal for compact urban spaces.', badge: null },
+                { id: 3, title: 'Kagan Upholstered Dining Chair', price: 5999, oldPrice: 7500, seating: '1', type: 'chair', popularity: 3, newness: 3, img: './frontend/images/s3.JPG', desc: 'Experience ultimate comfort with the Kagan dining chair. Its plush upholstery makes long dinners a pleasure.', badge: 'Sale' },
+                { id: 4, title: 'Acropolis Solid Wood Sideboard', price: 28999, seating: '0', type: 'sideboard', popularity: 5, newness: 2, img: '/frontend/images/s4.JPG', desc: 'Organize your dining essentials in style with this timeless solid wood construction.', badge: null },
+                { id: 5, title: 'Carven 2-Seater Dining Set', price: 15499, seating: '2', type: 'set', popularity: 6, newness: 6, img: '/frontend/images/s5.webp', desc: 'Perfect for cozy apartments, the Carven set combines style and function in a compact package.', badge: 'New' },
+                { id: 6, title: 'Zephyr Round Dining Table', price: 16999, seating: '4', type: 'table', popularity: 2, newness: 1, img: '/frontend/images/s6.webp', desc: 'Encourage conversation with the Zephyr round table. Its pedestal base allows for more legroom.', badge: null },
+                { id: 7, title: 'Sheesham Wood Bar Cabinet', price: 22500, oldPrice: 28000, seating: '0', type: 'sideboard', popularity: 8, newness: 8, img: '/frontend/images/s7.jpg', desc: 'A stylish and compact bar cabinet to store your collection with elegance.', badge: 'Sale' },
+                { id: 8, title: 'Mecor Metal Dining Chairs (Set of 4)', price: 9999, seating: '1', type: 'chair', popularity: 7, newness: 7, img: '/frontend/images/s8.jpeg', desc: 'Industrial chic meets modern comfort. These metal chairs are durable and surprisingly comfortable.', badge: null },
+                { id: 9, title: 'Atris 4-Seater Glass Top Set', price: 24999, seating: '4', type: 'set', popularity: 9, newness: 9, img: '/frontend/images/s9.jpg', desc: 'A modern dining set with a tempered glass top and sleek metal legs for a contemporary look.', badge: 'Popular' },
+                { id: 10, title: 'Solid Wood Extendable Table', price: 35999, oldPrice: 42000, seating: '8', type: 'table', popularity: 10, newness: 3, img: '/frontend/images/s10.jpeg', desc: 'Perfect for hosts, this table extends from 6 to 8 seats to accommodate more guests for special occasions.', badge: 'Sale' },
+                { id: 11, title: 'Velvet Upholstered Dining Bench', price: 8500, seating: '2', type: 'chair', popularity: 11, newness: 11, img: '/frontend/images/s11.JPG', desc: 'Add a touch of luxury and versatile seating to your dining area with this plush velvet bench.', badge: null },
+                { id: 12, title: 'Modern White Sideboard Buffet', price: 19999, seating: '0', type: 'sideboard', popularity: 12, newness: 12, img: '/frontend/images/s12.jpeg', desc: 'Clean lines and a minimalist design make this sideboard a perfect storage solution for modern homes.', badge: 'New' },
+                { id: 13, title: 'Farmhouse 8-Seater Dining Set', price: 65000, seating: '8', type: 'set', popularity: 13, newness: 14, img: '/frontend/images/s13.jpg', desc: 'A grand farmhouse-style set perfect for large family gatherings. Includes a large table and eight matching chairs.', badge: null },
+                { id: 14, title: 'Industrial Metal Bar Stool', price: 4500, seating: '1', type: 'chair', popularity: 15, newness: 10, img: '/frontend/images/s14.jpg', desc: 'A sturdy and stylish bar stool with a reclaimed wood seat, perfect for your kitchen island or bar table.', badge: null },
+                { id: 15, title: 'Nordic 4-Seater Oak Set', price: 28999, oldPrice: 32000, seating: '4', type: 'set', popularity: 14, newness: 13, img: '/frontend/images/s15.jpg', desc: 'Embrace Scandinavian design with this beautiful oak dining set. Simple, elegant, and built to last.', badge: 'Sale' },
+                { id: 16, title: 'Marble Top Dining Table', price: 39999, seating: '6', type: 'table', popularity: 16, newness: 16, img: '/frontend/images/s16.jpg', desc: 'Add a touch of opulence to your dining room with this genuine marble top table, supported by a sturdy wooden base.', badge: 'New' },
+                { id: 17, title: 'Lexi Dining Chairs (Set of 2)', price: 8999, seating: '1', type: 'chair', popularity: 18, newness: 18, img: '/frontend/images/s17.jpg', desc: 'Curved for comfort and style, the Lexi chairs feature a unique silhouette and soft fabric.', badge: 'Popular' },
+                { id: 18, title: 'Compact Drop-Leaf Table', price: 12999, seating: '2', type: 'table', popularity: 17, newness: 17, img: '/frontend/images/s18.jpg', desc: 'The ultimate space-saver. This drop-leaf table can be folded down when not in use, ideal for small kitchens.', badge: null },
+                { id: 19, title: 'Tall Glass-Door Cabinet', price: 25500, seating: '0', type: 'sideboard', popularity: 19, newness: 19, img: '/frontend/images/s19.jpg', desc: 'Showcase your finest dinnerware in this elegant cabinet with glass doors and internal lighting.', badge: null },
+                { id: 20, title: 'Boho Rattan Dining Chair', price: 6500, seating: '1', type: 'chair', popularity: 20, newness: 20, img: '/frontend/images/s20.webp', desc: 'Bring a natural, bohemian vibe to your dining space with this beautifully hand-woven rattan chair.', badge: 'New' },
+            ];
+
+            function populateProductDetails() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const productId = parseInt(urlParams.get('id'), 10);
+                const product = productsData.find(p => p.id === productId);
+
+                if (!product) {
+                    document.querySelector('.product-main-card').innerHTML = '<h1>Product not found. Please <a href="dining.html">return to the dining page</a> and select a product.</h1>';
+                    document.querySelectorAll('section:not(.product-main-card)').forEach(s => s.style.display = 'none');
+                    return;
+                }
+
+                document.title = `${product.title} | IRON STREET`;
+                document.querySelector('.product-title').textContent = product.title;
+                document.querySelector('.product-description').textContent = product.desc;
+                
+                const currentPriceEl = document.querySelector('.current-price');
+                const originalPriceEl = document.querySelector('.original-price');
+                currentPriceEl.textContent = `₹${product.price.toLocaleString('en-IN')}`;
+                if (product.oldPrice) {
+                    originalPriceEl.textContent = `₹${product.oldPrice.toLocaleString('en-IN')}`;
+                    originalPriceEl.style.display = 'inline';
+                } else {
+                    originalPriceEl.style.display = 'none';
+                }
+
+                const mainImage = document.getElementById('main-product-image');
+                const firstThumbnailImg = document.querySelector('.thumbnail-item .thumbnail-image');
+                mainImage.src = product.img;
+                mainImage.alt = product.title;
+                if (firstThumbnailImg) {
+                    firstThumbnailImg.src = product.img;
+                    firstThumbnailImg.alt = `${product.title} thumbnail`;
+                }
+                
+                initAddToCart(product); // ✅ Pass the found product to the Add to Cart function
+            }
+
+            function initImageGallery() {
+                const mainImage = document.getElementById('main-product-image');
+                const thumbnailList = document.getElementById('thumbnail-list');
+
+                if (!mainImage || !thumbnailList) return;
+
+                thumbnailList.addEventListener('click', (e) => {
+                    const thumbnailItem = e.target.closest('.thumbnail-item');
+                    if (!thumbnailItem) return;
+
+                    const activeThumbnail = thumbnailList.querySelector('.active');
+                    if(activeThumbnail) activeThumbnail.classList.remove('active');
+                    thumbnailItem.classList.add('active');
+
+                    const newImageSrc = thumbnailItem.querySelector('.thumbnail-image').src;
+                    mainImage.style.opacity = 0;
+                    setTimeout(() => {
+                        mainImage.src = newImageSrc;
+                        mainImage.style.opacity = 1;
+                    }, 200);
+                });
+            }
+
+            function initQuantitySelector() {
+                const minusBtn = document.getElementById('quantity-minus');
+                const plusBtn = document.getElementById('quantity-plus');
+                const quantityInput = document.getElementById('quantity-input');
+
+                if (!minusBtn || !plusBtn || !quantityInput) return;
+
+                minusBtn.addEventListener('click', () => {
+                    let currentValue = parseInt(quantityInput.value, 10);
+                    if (currentValue > 1) {
+                        quantityInput.value = currentValue - 1;
+                    }
+                });
+
+                plusBtn.addEventListener('click', () => {
+                    let currentValue = parseInt(quantityInput.value, 10);
+                    quantityInput.value = currentValue + 1;
+                });
+
+                quantityInput.addEventListener('change', () => {
+                    let currentValue = parseInt(quantityInput.value, 10);
+                    if (isNaN(currentValue) || currentValue < 1) {
+                        quantityInput.value = 1;
+                    }
+                });
+            }
+            
+            function initWhyChooseUs() {
+                const grid = document.getElementById('why-choose-us-grid');
+                const descriptionArea = document.getElementById('why-choose-us-description-area');
+                
+                if (!grid || !descriptionArea) return;
+
+                const defaultText = descriptionArea.textContent;
+                
+                grid.addEventListener('mouseover', (e) => {
+                    const item = e.target.closest('.why-choose-us-item');
+                    if(item && item.dataset.description) {
+                        descriptionArea.textContent = item.dataset.description;
+                        descriptionArea.style.fontStyle = 'normal';
+                    }
+                });
+                
+                grid.addEventListener('mouseout', (e) => {
+                    const item = e.target.closest('.why-choose-us-item');
+                    if(item) {
+                       descriptionArea.textContent = defaultText;
+                       descriptionArea.style.fontStyle = 'italic';
+                    }
+                });
+            }
+
+            function initAccordion() {
+                const accordion = document.getElementById('product-accordion');
+                if (!accordion) return;
+
+                const firstItem = accordion.querySelector('.accordion-item.active');
+                if (firstItem) {
+                    const firstContent = firstItem.querySelector('.accordion-content');
+                    firstContent.style.maxHeight = firstContent.scrollHeight + "px";
+                }
+
+                accordion.addEventListener('click', (e) => {
+                    const header = e.target.closest('.accordion-header');
+                    if (!header) return;
+
+                    const item = header.parentElement;
+                    const content = header.nextElementSibling;
+                    const wasActive = item.classList.contains('active');
+
+                    accordion.querySelectorAll('.accordion-item').forEach(otherItem => {
+                        if(otherItem !== item) {
+                            otherItem.classList.remove('active');
+                            otherItem.querySelector('.accordion-content').style.maxHeight = null;
+                        }
+                    });
+                    
+                    if (!wasActive) {
+                        item.classList.add('active');
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } else {
+                        item.classList.remove('active');
+                        content.style.maxHeight = null;
+                    }
+                });
+            }
+            
+            function showToast(message) {
+                const toast = document.getElementById('toast-notification');
+                const toastMessage = document.getElementById('toast-message');
+                if (!toast || !toastMessage) return;
+
+                toastMessage.textContent = message;
+                toast.classList.add('show');
+
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3500);
+            }
+
+            // ✅ MODIFICATION: This function now adds the product to localStorage
+            function initAddToCart(product) {
+                const addToCartBtn = document.getElementById('add-to-cart-btn');
+                if (!addToCartBtn || !product) return;
+
+                addToCartBtn.addEventListener('click', () => {
+                    if (addToCartBtn.classList.contains('added')) return;
+                    
+                    // 1. Get current cart from localStorage
+                    let cart = JSON.parse(localStorage.getItem('ecoCart')) || [];
+                    
+                    // 2. Get quantity from the input field
+                    const quantityInput = document.getElementById('quantity-input');
+                    const quantity = parseInt(quantityInput.value, 10);
+                    
+                    // 3. Check if product already in cart
+                    const existingItemIndex = cart.findIndex(item => item.id === product.id);
+
+                    if (existingItemIndex > -1) {
+                        // If product exists, just update its quantity
+                        cart[existingItemIndex].quantity += quantity;
+                    } else {
+                        // Otherwise, add the new item to the cart
+                        cart.push({
+                            id: String(product.id), // Ensure ID is a string as in cart.js
+                            name: product.title,
+                            price: product.price,
+                            image: product.img,
+                            quantity: quantity,
+                            variant: 'Standard' // Default variant
+                        });
+                    }
+
+                    // 4. Save the updated cart back to localStorage
+                    localStorage.setItem('ecoCart', JSON.stringify(cart));
+                    
+                    // 5. Show user feedback (toast and button state)
+                    const originalTextEl = addToCartBtn.querySelector('span');
+                    const originalText = "Add to Cart";
+                    originalTextEl.textContent = 'Added!';
+                    addToCartBtn.classList.add('added');
+                    
+                    showToast(`${quantity} x ${product.title} added to your cart.`);
+                    
+                    setTimeout(() => {
+                        originalTextEl.textContent = originalText;
+                        addToCartBtn.classList.remove('added');
+                    }, 2500);
+                });
+            }
+
+            // --- INITIALIZE ALL FUNCTIONS ---
+            populateProductDetails();
+            initImageGallery();
+            initQuantitySelector();
+            initWhyChooseUs();
+            initAccordion();
+            // initAddToCart is now called inside populateProductDetails
+        });
+    </script>
+</body>
+</html>
